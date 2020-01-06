@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
+from MachineLearning.ML import MLStep1
 
 
 class Decision:
@@ -12,13 +13,15 @@ class Decision:
         canvasN.create_image(0, 0, anchor=NW, image=imageN)
         canvasN.grid(row=0, column=1, columnspan=3, rowspan=3)
 
-        l1 = Label(frame, text="Per cosa utilizzerai l'auto?", background='#c8e6c9', foreground="#43a047", font=("Helvetica", 60))
-        l2 = Label(frame, text="decisIoncAr", background='#c8e6c9', foreground="#43a047", font=("Helvetica", 90))
+        l1 = Label(frame, text="Per cosa utilizzerai", background='#c8e6c9', foreground="#43a047",
+                   font=("Helvetica", 60))
+        l2 = Label(frame, text="l'auto?", background='#c8e6c9', foreground="#43a047", font=("Helvetica", 60))
 
         l1.grid(row=0, column=3)
         l2.grid(row=1, column=3)
 
-        b1 = Button(frame, text="Start", width=10, background="#c8e6c9",
+        b1 = Button(frame, text="Answer", width=10, background="#c8e6c9",
+                    command=MLStep1,
                     font=('Courrier', '50'),
                     foreground="#ff8f00")
         b1.grid(row=2, column=3)
