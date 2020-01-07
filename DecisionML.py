@@ -16,11 +16,24 @@ class Decision:
         canvasN.create_image(0, 0, anchor=NW, image=imageN)
         canvasN.grid(row=0, column=0, columnspan=5, rowspan=5)
 
+        def PrintResult(value):
+            l1 = Label(frame, text="Ti consiglio di cercare un auto", background=ColorBttn, foreground="#43a047",
+                       font=("Helvetica", 50))
+            l2 = Label(frame, text="di questa marca:", background='#c8e6c9', foreground="#43a047",
+                       font=("Helvetica", 40))
+            l3 = Label(frame, text=value, background='#c8e6c9', foreground="#e57373",
+                       font=("Helvetica", 70))
+
+            l1.grid(row=0, column=4)
+            l2.grid(row=1, column=4)
+            l3.grid(row=2, column=4)
+
         def CallMachineLearnng(q1, q2, q3, q4, q5):
             # print(ChoiceQ1 + " " + ChoiceQ1_2 + " " + ChoiceQ1_3 + " " + ChoiceQ1_4 + " " + ChoiceQ1_5)
             print(q1 + " " + q2 + " " + " " + q4 + " " + q5)
             from MachineLearning import DecisionThreeML
-            DecisionThreeML.DecisionML(q1, q2, q3, q4, q5)
+            a = DecisionThreeML.DecisionML.Decison("self", q1, q2, q3, q4, q5)
+            PrintResult(a)
 
         def Question1_5(q1, q2, q3, q4):
             def setBenz():

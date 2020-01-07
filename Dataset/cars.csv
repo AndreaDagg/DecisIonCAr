@@ -117,13 +117,6 @@ symboling,marca,carburante,aspirazione,porte,trazione,lunghezza,larghezza,altezz
 0,peugot,gas,std,4,rwd,186.7,68.4,56.7,3075,4,120,97,19,24,16630
 0,peugot,diesel,turbo,4,rwd,186.7,68.4,56.7,3252,4,152,95,28,33,17950
 0,peugot,gas,turbo,4,rwd,186.7,68.3,56,3130,4,134,142,18,24,18150
-1,plymouth,gas,std,2,fwd,157.3,63.8,50.8,1918,4,90,68,37,41,5572
-1,plymouth,gas,turbo,2,fwd,157.3,63.8,50.8,2128,4,98,102,24,30,7957
-1,plymouth,gas,std,4,fwd,157.3,63.8,50.6,1967,4,90,68,31,38,6229
-1,plymouth,gas,std,4,fwd,167.3,63.8,50.8,1989,4,90,68,31,38,6692
-1,plymouth,gas,std,4,fwd,167.3,63.8,50.8,2191,4,98,68,31,38,7609
--1,plymouth,gas,std,4,fwd,174.6,64.6,59.8,2535,4,122,88,24,30,8921
-3,plymouth,gas,turbo,2,rwd,173.2,66.3,50.2,2818,4,156,145,19,24,12764
 3,porsche,gas,std,2,rwd,168.9,68.3,50.2,2778,4,151,143,19,27,22018
 3,porsche,gas,std,2,rwd,168.9,65,51.6,2756,6,194,207,17,25,32528
 3,porsche,gas,std,2,rwd,168.9,65,51.6,2756,6,194,207,17,25,34028

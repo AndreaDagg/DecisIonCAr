@@ -1,3 +1,5 @@
+from builtins import map
+
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -6,7 +8,8 @@ from sklearn.metrics import accuracy_score
 
 
 class DecisionML():
-    def __init__(self, q1, q2, q3, q4, q5):
+
+    def Decison(self, q1, q2, q3, q4, q5):
         DELETE = -1
         carsData = pd.read_csv("Dataset/cars.csv")
         # print(carsData.info())
@@ -26,6 +29,14 @@ class DecisionML():
         mediaLarghezza = carsData['larghezza'].mean()
         mediaCilindrata = carsData['cilindrata'].mean()
         mediaCavalli = carsData['cavalli'].mean()
+
+        print(carsData.info())
+        carsData = carsData.drop(
+            carsData[(carsData.mpgcitta > mediaCitta) & (carsData.lunghezza > mediaLunghezza)].index)
+        # carsData = carsData.drop()
+        print(carsData.info())
+        # mediaCitta = carsData['mpgcitta'].mean()
+        mediaLunghezza = carsData['lunghezza'].mean()
 
         data_tree = carsData
 
@@ -73,20 +84,18 @@ class DecisionML():
 
         # data_tree = pd.get_dummies(data_tree)
 
-        print(data_tree.columns.tolist())
-        print(data_tree.info())
-        print(data_tree.head())
+        # print(data_tree.columns.tolist())
+        # print(data_tree.info())
+        # print(data_tree.head())
         # print(carsData.columns.tolist())
 
         from sklearn import tree
+        from sklearn.tree import DecisionTreeClassifier
         x = data_tree.drop(['marca'], axis=1)
         y = carsData['marca']
 
-        '''
         x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=0)
         print(x.shape)
-
-       
 
         tree = DecisionTreeClassifier(criterion="gini")
         tree.fit(x_train, y_train)
@@ -97,14 +106,15 @@ class DecisionML():
         accuracy_test = accuracy_score(y_test, y_pred)
 
         print("ACCURACY: TRAIN=%.4f TEST=%.4f" % (accuracy_train, accuracy_test))
-        '''
 
+        '''
         tree_clf = tree.DecisionTreeClassifier(criterion='gini', max_features=None, splitter='best')
         tree_clf = tree_clf.fit(x, y)
 
         # Nel Peggiore dei casi
         # ['porte', 'lunghezza', 'larghezza', 'cilindrata', 'cavalli', 'mpgcitta', 'trazione_4wd', 'trazione_fwd', 'trazione_rwd', 'carburante_diesel', 'carburante_gas', 'aspirazione_std', 'aspirazione_turbo']
 
+        '''
         '''
         print(porte)
         print(trazione)
@@ -114,18 +124,22 @@ class DecisionML():
         print(" - - - - - - - - ")
         print(data_tree.info())
         print(data_tree.columns.tolist())
-        '''
         print(mediaCavalli)
         print(mediaCilindrata)
         print(mediaCitta)
+        '''
         exsample = [porte, mediaLunghezza, mediaLarghezza, mediaCilindrata,
-                    mediaCavalli]
+                    mediaCavalli, mediaCitta]
         if trazione != DELETE:
             exsample = exsample + trazione
         if carburante != DELETE:
             exsample = exsample + carburante
+        exsample = exsample + AspirazioneMotore
 
         print(exsample)
+        print(data_tree.columns.tolist())
 
-        risultati = tree_clf.predict([exsample])
+        risultati = tree.predict([exsample])
+
         print(risultati)
+        return risultati
