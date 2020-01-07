@@ -1,19 +1,20 @@
-from builtins import map
+"""
+Questa classe si occupa di creare l'labero decisionale sulle caratteristiche di un'auto per la città.
+"""
 
 import pandas as pd
-import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import log_loss
 from sklearn.metrics import accuracy_score
 
 
-class DecisionML():
+class DecisionML:
 
     def Decison(self, q1, q2, q3, q4, q5):
+        print(F"Choices: {q1} - {q2} - {q3} - {q4} - {q5}")
         DELETE = -1
         carsData = pd.read_csv("Dataset/cars.csv")
         # print(carsData.info())
-        # print(q1 + " " + q2 + " " + " " + q4 + " " + q5)
+        # print(carsData.head())
 
         # Eliminaimo le colonne non utli dal dataset
         carsData = carsData.drop('prezzo', axis=1)
@@ -22,7 +23,6 @@ class DecisionML():
         carsData = carsData.drop('mpgautostrada', axis=1)
         carsData = carsData.drop('peso', axis=1)
         carsData = carsData.drop('symboling', axis=1)
-        # carsData = carsData.drop('marca', axis=1)
 
         mediaCitta = carsData['mpgcitta'].mean()
         mediaLunghezza = carsData['lunghezza'].mean()
@@ -30,40 +30,36 @@ class DecisionML():
         mediaCilindrata = carsData['cilindrata'].mean()
         mediaCavalli = carsData['cavalli'].mean()
 
-        print(carsData.info())
+        # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
+        print(F"Esempi di partenza (!Wne): {carsData.shape}")
+
         carsData = carsData.drop(
             carsData[(carsData.mpgcitta > mediaCitta) & (carsData.lunghezza > mediaLunghezza)].index)
-        # carsData = carsData.drop()
-        print(carsData.info())
-        # mediaCitta = carsData['mpgcitta'].mean()
+        mediaCitta = carsData['mpgcitta'].mean()
         mediaLunghezza = carsData['lunghezza'].mean()
 
         data_tree = carsData
 
+        # Setto i paramentri impostati nell Gui ed effettuo Why not encoding dove necessario
         if q2 == "Three":
             porte = 2
         else:
             porte = 4
 
         if q3 == True:
-            AspirazioneMotore = "turbo"
             AspirazioneMotore = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["aspirazione"])  # Why not encoding
         else:
-            AspirazioneMotore = "std"
             AspirazioneMotore = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["aspirazione"])
 
         if q4 == "ANT":
-            trazione = "fwd"
             trazione = [0, 1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         elif q4 == "POST":
-            trazione = "rwd"
             trazione = [0, 0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         elif q3 == True:
-            trazione = "4wd"
             trazione = [1, 0, 0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         else:
@@ -71,31 +67,28 @@ class DecisionML():
             data_tree = data_tree.drop('trazione', axis=1)
 
         if q5 == "BENZ":
-            carburante = "gas"
             carburante = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["carburante"])
         elif q5 == "DIS":
-            carburante = "diesel"
             carburante = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["carburante"])
         else:
             carburante = DELETE
             data_tree = data_tree.drop('carburante', axis=1)
 
-        # data_tree = pd.get_dummies(data_tree)
-
-        # print(data_tree.columns.tolist())
-        # print(data_tree.info())
-        # print(data_tree.head())
-        # print(carsData.columns.tolist())
-
-        from sklearn import tree
+        # Costruisci l'albero decisionale
         from sklearn.tree import DecisionTreeClassifier
+        from IPython.display import Image
+        from sklearn.tree import export_graphviz
+        import os
+        from subprocess import call
+
         x = data_tree.drop(['marca'], axis=1)
         y = carsData['marca']
 
         x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=0)
-        print(x.shape)
+
+        print(F"Esempi su chi abbiamo fatto train e test: {x.shape}")
 
         tree = DecisionTreeClassifier(criterion="gini")
         tree.fit(x_train, y_train)
@@ -107,39 +100,25 @@ class DecisionML():
 
         print("ACCURACY: TRAIN=%.4f TEST=%.4f" % (accuracy_train, accuracy_test))
 
-        '''
-        tree_clf = tree.DecisionTreeClassifier(criterion='gini', max_features=None, splitter='best')
-        tree_clf = tree_clf.fit(x, y)
-
-        # Nel Peggiore dei casi
-        # ['porte', 'lunghezza', 'larghezza', 'cilindrata', 'cavalli', 'mpgcitta', 'trazione_4wd', 'trazione_fwd', 'trazione_rwd', 'carburante_diesel', 'carburante_gas', 'aspirazione_std', 'aspirazione_turbo']
-
-        '''
-        '''
-        print(porte)
-        print(trazione)
-        print(carburante)
-        print(carsData.info())
-        print(AspirazioneMotore)
-        print(" - - - - - - - - ")
-        print(data_tree.info())
-        print(data_tree.columns.tolist())
-        print(mediaCavalli)
-        print(mediaCilindrata)
-        print(mediaCitta)
-        '''
-        exsample = [porte, mediaLunghezza, mediaLarghezza, mediaCilindrata,
-                    mediaCavalli, mediaCitta]
+        value_list = [porte, mediaLunghezza, mediaLarghezza, mediaCilindrata,
+                      mediaCavalli, mediaCitta]
         if trazione != DELETE:
-            exsample = exsample + trazione
+            value_list = value_list + trazione
         if carburante != DELETE:
-            exsample = exsample + carburante
-        exsample = exsample + AspirazioneMotore
+            value_list = value_list + carburante
+        value_list = value_list + AspirazioneMotore
 
-        print(exsample)
         print(data_tree.columns.tolist())
+        print(value_list)
 
-        risultati = tree.predict([exsample])
+        predizione = tree.predict([value_list])
 
-        print(risultati)
-        return risultati
+        print(F"Predizione: {predizione[0]}")
+
+        os.environ['PATH'] = os.environ['PATH'] + ';' + os.environ['CONDA_PREFIX'] + r"\Library\bin\graphviz"
+        export_graphviz(tree, out_file="treecity.dot", feature_names=None, rounded=True, precision=2,
+                        filled=True, class_names=True)
+        call(['dot', '-Tpng', 'treecity.dot', '-o', 'treecity.png'])
+        Image(filename='treecity.png')
+
+        return predizione[0]

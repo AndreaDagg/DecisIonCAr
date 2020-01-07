@@ -3,9 +3,10 @@ from PIL import ImageTk, Image
 
 # pip install Pillow
 from DecisionML import Decision
+from Gui_Ques.City import City
 
 
-class StartPage():
+class StartPage:
 
     def __init__(self):
         root = Tk()
