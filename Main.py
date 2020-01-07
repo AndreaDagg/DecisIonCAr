@@ -1,3 +1,2 @@
-import StartPage
-
-StartPage.StartPage.__init__("")
+from StartPage import StartPage
+StartPage()
