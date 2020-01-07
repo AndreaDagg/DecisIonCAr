@@ -24,11 +24,18 @@ class MLStep1:
         print(carsData.info())
         print(carsData.head())
 
-        x = carsData.drop("prezzo", axis=1).values
-        y = carsData['prezzo'].values
+        media = carsData["mpgcitta"].mean()
+        print(F"Media: {media}")
 
-        x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=0)
 
+#        x = carsData.drop("prezzo", axis=1).values
+#       y = carsData['prezzo'].values
+
+
+# x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=0)
+
+
+"""
         from sklearn.tree import DecisionTreeClassifier
         tree = DecisionTreeClassifier(criterion="gini")
         tree.fit(x_train, y_train)
@@ -40,19 +47,21 @@ class MLStep1:
 
         print("ACCURACY: TRAIN=%.4f TEST=%.4f" % (accuracy_train, accuracy_test))
 
-        '''
-        from sklearn.tree import export_graphviz
-        import pydotplus
+"""
 
-        from subprocess import call
-        from IPython.display import Image
+'''
+from sklearn.tree import export_graphviz
+import pydotplus
 
-        export_graphviz(tree, out_file='tree.dot')
+from subprocess import call
+from IPython.display import Image
 
-        # Convert to png using system command (requires Graphviz)
-        from subprocess import call
-        call(["dot", "-Tpng", "tree.dot", "-o", "tree.png", "-Gdpi=600"])
+export_graphviz(tree, out_file='tree.dot')
 
-        from IPython.display import Image
-        Image(filename='tree.png')
-        '''
+# Convert to png using system command (requires Graphviz)
+from subprocess import call
+call(["dot", "-Tpng", "tree.dot", "-o", "tree.png", "-Gdpi=600"])
+
+from IPython.display import Image
+Image(filename='tree.png')
+'''
