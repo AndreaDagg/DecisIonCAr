@@ -138,9 +138,9 @@ class DecisionML:
         print(F"Predizione: {predizione[0]}")
 
         os.environ['PATH'] = os.environ['PATH'] + ';' + os.environ['CONDA_PREFIX'] + r"\Library\bin\graphviz"
-        export_graphviz(tree, out_file="treecity.dot", feature_names=None, rounded=True, precision=2,
+        export_graphviz(tree, out_file="treetrip.dot", feature_names=None, rounded=True, precision=2,
                         filled=True, class_names=True)
-        call(['dot', '-Tpng', 'treecity.dot', '-o', 'treecity.png'])
-        Image(filename='treecity.png')
+        call(['dot', '-Tpng', 'treetrip.dot', '-o', 'treetrip.png'])
+        Image(filename='treetrip.png')
 
         return predizione[0]

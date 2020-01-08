@@ -1,5 +1,5 @@
 """
-Questa classe si occupa di creare l'labero decisionale sulle caratteristiche di un'auto per lunghi viaggi.
+Questa classe si occupa di creare l'labero decisionale sulle caratteristiche di un'auto berline.
 """
 
 import pandas as pd
@@ -12,33 +12,39 @@ class DecisionML:
     def Decison(self, q1, q2, q3, q4, q5):
         print(F"Choices: {q1} - {q2} - {q3} - {q4} - {q5}")
         DELETE = -1
+        MINCILINDRI = 6
         carsData = pd.read_csv("Dataset/cars.csv")
         # print(carsData.info())
         # print(carsData.head())
 
         # Eliminaimo le colonne non utli dal dataset
         carsData = carsData.drop('prezzo', axis=1)
-        carsData = carsData.drop('cilindri', axis=1)
-        carsData = carsData.drop('altezza', axis=1)
+        carsData = carsData.drop('larghezza', axis=1)
         carsData = carsData.drop('mpgautostrada', axis=1)
+        carsData = carsData.drop('mpgcitta', axis=1)
         carsData = carsData.drop('peso', axis=1)
         carsData = carsData.drop('symboling', axis=1)
+        carsData = carsData.drop('aspirazione', axis=1)
 
-        mediaCitta = carsData['mpgcitta'].mean()
-        mediaLunghezza = carsData['lunghezza'].mean()
-        mediaLarghezza = carsData['larghezza'].mean()
+        mediaCitta = carsData['cilindri'].mean()
+        mediaLunghezza = carsData['lunghezza'].mean()  # Valutare se drop
         mediaCilindrata = carsData['cilindrata'].mean()
         mediaCavalli = carsData['cavalli'].mean()
+        mediaAltezza = carsData['altezza'].mean()
 
         # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
         print(F"Esempi di partenza (!Wne): {carsData.shape}")
 
-        carsData = carsData.drop(
-            carsData[(carsData.mpgcitta > mediaCitta) & (carsData.lunghezza > mediaLunghezza)].index)
-        mediaCitta = carsData['mpgcitta'].mean()
-        mediaLunghezza = carsData['lunghezza'].mean()
+        print(carsData.columns.tolist())
+        carsData = carsData.drop(carsData[(carsData.cilindri < MINCILINDRI)].index)
+        print(carsData.columns.tolist())
+        carsData = carsData.drop(carsData[(carsData.cilindrata < 100) & (carsData.cavalli < mediaCavalli)].index)
 
-        data_tree = carsData
+        print(carsData.columns.tolist())
+
+        mediaCilindrata = carsData['cilindrata'].mean()
+        mediaCilindri = carsData['cilindri'].mean()
+        mediaCavalli = carsData['cavalli'].mean()
 
         # Setto i paramentri impostati nell Gui ed effettuo Why not encoding dove necessario
         if q2 == "Three":
@@ -47,20 +53,16 @@ class DecisionML:
             porte = 4
 
         if q3 == True:
-            AspirazioneMotore = [0, 1]
-            data_tree = pd.get_dummies(data_tree, columns=["aspirazione"])  # Why not encoding
-        else:
-            AspirazioneMotore = [1, 0]
-            data_tree = pd.get_dummies(data_tree, columns=["aspirazione"])
+            carsData = carsData.drop(carsData[(carsData.altezza < mediaAltezza)].index)
+            mediaAltezza = carsData['altezza'].mean()
+
+        data_tree = carsData
 
         if q4 == "ANT":
-            trazione = [0, 1, 0]
+            trazione = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         elif q4 == "POST":
-            trazione = [0, 0, 1]
-            data_tree = pd.get_dummies(data_tree, columns=["trazione"])
-        elif q3 == True:
-            trazione = [1, 0, 0]
+            trazione = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         else:
             trazione = DELETE
@@ -90,7 +92,7 @@ class DecisionML:
 
         print(F"Esempi su chi abbiamo fatto train e test: {x.shape}")
 
-        tree = DecisionTreeClassifier(criterion="gini", max_depth=7)
+        tree = DecisionTreeClassifier(criterion="gini", max_depth=3)
         tree.fit(x_train, y_train)
         y_pred_train = tree.predict(x_train)
         y_pred = tree.predict(x_test)
@@ -100,13 +102,15 @@ class DecisionML:
 
         print("ACCURACY: TRAIN=%.4f TEST=%.4f" % (accuracy_train, accuracy_test))
 
-        value_list = [porte, mediaLunghezza, mediaLarghezza, mediaCilindrata,
-                      mediaCavalli, mediaCitta]
+        value_list = [porte, mediaLunghezza, mediaAltezza, mediaCilindri, mediaCilindrata,
+                      mediaCavalli]
+        # print(F"Porte {porte}, lung {mediaLunghezza} alte {mediaAltezza} cilind {mediaCilindri} cilindra {mediaCilindrata} cavall {mediaCavalli}")
         if trazione != DELETE:
             value_list = value_list + trazione
+        #   print(F"traz {trazione}")
         if carburante != DELETE:
             value_list = value_list + carburante
-        value_list = value_list + AspirazioneMotore
+        #  print(F"ccarb {carburante}")
 
         print(data_tree.columns.tolist())
         print(value_list)
@@ -116,9 +120,9 @@ class DecisionML:
         print(F"Predizione: {predizione[0]}")
 
         os.environ['PATH'] = os.environ['PATH'] + ';' + os.environ['CONDA_PREFIX'] + r"\Library\bin\graphviz"
-        export_graphviz(tree, out_file="treecity.dot", feature_names=None, rounded=True, precision=2,
+        export_graphviz(tree, out_file="treerace.dot", feature_names=None, rounded=True, precision=2,
                         filled=True, class_names=True)
-        call(['dot', '-Tpng', 'treecity.dot', '-o', 'treecity.png'])
-        Image(filename='treecity.png')
+        call(['dot', '-Tpng', 'treerace.dot', '-o', 'treerace.png'])
+        Image(filename='treerace.png')
 
         return predizione[0]

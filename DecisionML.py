@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 from Gui_Ques.City import City
 from Gui_Ques.Trip import Trip
+from Gui_Ques.Race import Race
 
 
 class Decision:
@@ -34,6 +35,7 @@ class Decision:
                 ChoiceQ1 = "svago"
                 destryAll()
                 # Question1_2(ChoiceQ1)
+                Race(frame)
 
             l1 = Label(frame, text="Per cosa utilizzerai", background='#c8e6c9', foreground="#43a047",
                        font=("Helvetica", 60))

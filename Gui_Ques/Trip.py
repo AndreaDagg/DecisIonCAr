@@ -23,7 +23,7 @@ class Trip:
 
         def Tree():
             from TreePng import ShowTree
-            ShowTree(frame, "city")
+            ShowTree(frame, "TRIP")
 
         def PrintResult(value):
             l1 = Label(frame, text="Ti consiglio di cercare un auto", background=ColorBttn, foreground="#43a047",
