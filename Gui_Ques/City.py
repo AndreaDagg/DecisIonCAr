@@ -16,13 +16,13 @@ class City:
 
         frame.grid(row=0, column=0, columnspan=5, rowspan=5)
 
-        canvasN = Canvas(frame, width=1280, height=720)
+        canvasN = Canvas(frame, width=1230, height=660)
         imageN = ImageTk.PhotoImage(Image.open("img/DecisionCarCity.png"))
         canvasN.create_image(0, 0, anchor=NW, image=imageN)
         canvasN.grid(row=0, column=0, columnspan=5, rowspan=5)
 
         def Tree():
-            from TreePng import ShowTree
+            from img.TreePng import ShowTree
             ShowTree(frame, "CITY")
 
         def PrintResult(value):

@@ -1,0 +1,6 @@
+With Anaconda Python interpeter
+
+pip install pandas
+pip install sklearn
+pip install Pillow
+conda install graphvz

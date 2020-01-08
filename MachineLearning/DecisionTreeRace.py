@@ -35,12 +35,13 @@ class DecisionML:
         # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
         print(F"Esempi di partenza (!Wne): {carsData.shape}")
 
-        print(carsData.columns.tolist())
-        carsData = carsData.drop(carsData[(carsData.cilindri < MINCILINDRI)].index)
-        print(carsData.columns.tolist())
-        carsData = carsData.drop(carsData[(carsData.cilindrata < 100) & (carsData.cavalli < mediaCavalli)].index)
 
-        print(carsData.columns.tolist())
+        carsData = carsData.drop(carsData[(carsData.cilindri < MINCILINDRI)].index)
+        carsData = carsData.drop(carsData[(carsData.cilindrata < 100)].index)
+        carsData = carsData.drop(carsData[(carsData.cavalli < mediaCavalli)].index)
+        carsData = carsData.drop(carsData[(carsData.marca == "toyota")].index)
+        carsData = carsData.drop(carsData[(carsData.marca == "nissan")].index)
+
 
         mediaCilindrata = carsData['cilindrata'].mean()
         mediaCilindri = carsData['cilindri'].mean()
@@ -92,7 +93,7 @@ class DecisionML:
 
         print(F"Esempi su chi abbiamo fatto train e test: {x.shape}")
 
-        tree = DecisionTreeClassifier(criterion="gini", max_depth=3)
+        tree = DecisionTreeClassifier(criterion="gini")
         tree.fit(x_train, y_train)
         y_pred_train = tree.predict(x_train)
         y_pred = tree.predict(x_test)

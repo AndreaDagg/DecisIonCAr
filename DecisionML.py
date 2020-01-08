@@ -13,10 +13,10 @@ class Decision:
 
         frame.grid(row=0, column=0, columnspan=5, rowspan=5)
 
-        canvasN = Canvas(frame, width=1280, height=720)
+        canvasN = Canvas(frame, width=1230, height=660)
         imageN = ImageTk.PhotoImage(Image.open("img/DecisionCar1.png"))
         canvasN.create_image(0, 0, anchor=NW, image=imageN)
-        canvasN.grid(row=0, column=0, columnspan=5, rowspan=5)
+        canvasN.grid(row=0, column=0, columnspan=5, rowspan=6)
 
         def Question1():
             def setCitta():
@@ -38,8 +38,8 @@ class Decision:
                 Race(frame)
 
             l1 = Label(frame, text="Per cosa utilizzerai", background='#c8e6c9', foreground="#43a047",
-                       font=("Helvetica", 60))
-            l2 = Label(frame, text="l'auto?", background='#c8e6c9', foreground="#43a047", font=("Helvetica", 50))
+                       font=("Helvetica", 70))
+            l2 = Label(frame, text="l'auto?", background='#c8e6c9', foreground="#43a047", font=("Helvetica", 60))
 
             l1.grid(row=0, column=4)
             l2.grid(row=1, column=4)
@@ -54,7 +54,7 @@ class Decision:
                         font=('Courrier', '20'),
                         foreground=ColorBttnTxT)
 
-            b3 = Button(frame, text="Svago", width=15, background=ColorBttn,
+            b3 = Button(frame, text="Performance ", width=15, background=ColorBttn,
                         command=setSvago,
                         font=('Courrier', '20'),
                         foreground=ColorBttnTxT)

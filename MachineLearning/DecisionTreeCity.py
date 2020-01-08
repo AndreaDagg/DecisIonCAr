@@ -115,6 +115,7 @@ class DecisionML:
 
         print(F"Predizione: {predizione[0]}")
 
+
         os.environ['PATH'] = os.environ['PATH'] + ';' + os.environ['CONDA_PREFIX'] + r"\Library\bin\graphviz"
         export_graphviz(tree, out_file="treecity.dot", feature_names=None, rounded=True, precision=2,
                         filled=True, class_names=True)
