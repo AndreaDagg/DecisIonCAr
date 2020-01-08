@@ -11,11 +11,11 @@ class StartPage:
     def __init__(self):
         root = Tk()
         root.title("DecisionCar")
-        root.geometry("1280x720")
+        root.geometry("1230x660")
         root.resizable(FALSE, FALSE)
         icona = PhotoImage(file="img/DecisionCarIco.png")
-        root.tk.call("wm", "iconphoto", root.w, icona)
-        frame = Frame(root, height=1280, width=720)
+        #root.tk.call("wm", "iconphoto", root.w, icona)
+        frame = Frame(root, height=1280, width=690)
         frame.grid(row=0, column=0, columnspan=5, rowspan=5)
 
         canvas = Canvas(frame, width=1280, height=720)
