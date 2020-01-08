@@ -1,5 +1,5 @@
 """
-Questa classe si occupa di creare l'labero decisionale sulle caratteristiche di un'auto per la città.
+Questa classe si occupa di creare l'labero decisionale sulle caratteristiche di un'auto per lunghi viaggi.
 """
 
 import pandas as pd
@@ -90,7 +90,7 @@ class DecisionML:
 
         print(F"Esempi su chi abbiamo fatto train e test: {x.shape}")
 
-        tree = DecisionTreeClassifier(criterion="gini")
+        tree = DecisionTreeClassifier(criterion="gini", max_depth=7)
         tree.fit(x_train, y_train)
         y_pred_train = tree.predict(x_train)
         y_pred = tree.predict(x_test)

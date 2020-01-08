@@ -1,5 +1,5 @@
 """
-Questa classe si occupa di effettuare le domande quando è stato scelto l'utilizzo in città.
+Questa classe si occupa di effettuare le domande quando è stato scelto l'utilizzo in viaggio.
 Richiama la classe di Machine learning una volta settati tutti i parametri necessari.
 """
 
@@ -7,9 +7,9 @@ from tkinter import *
 from PIL import ImageTk, Image
 
 
-class City:
+class Race:
 
-    def CityQuestion(self, frame):
+    def RaceQuestion(self, frame):
         ColorBttn = "#c8e6c9"
         ColorBttnTxtree = "#455a64"
         ColorBttnTxT = "#ff8f00"
@@ -17,13 +17,13 @@ class City:
         frame.grid(row=0, column=0, columnspan=5, rowspan=5)
 
         canvasN = Canvas(frame, width=1280, height=720)
-        imageN = ImageTk.PhotoImage(Image.open("img/DecisionCarCity.png"))
+        imageN = ImageTk.PhotoImage(Image.open("img/DecisionCarRace.png"))
         canvasN.create_image(0, 0, anchor=NW, image=imageN)
         canvasN.grid(row=0, column=0, columnspan=5, rowspan=5)
 
         def Tree():
             from TreePng import ShowTree
-            ShowTree(frame, "CITY")
+            ShowTree(frame, "RACE")
 
         def PrintResult(value):
             l1 = Label(frame, text="Ti consiglio di cercare un auto", background=ColorBttn, foreground="#43a047",
@@ -43,9 +43,9 @@ class City:
             b1.grid(row=4, column=4)
 
         def CallMachineLearnng(q1, q2, q3, q4, q5):
-            from MachineLearning import DecisionTreeCity
-            a = DecisionTreeCity.DecisionML.Decison("self", q1, q2, q3, q4, q5)
-            PrintResult(a)
+            from MachineLearning import DecisionTreeRace
+            predictTrip = DecisionTreeRace.DecisionML.Decison("self", q1, q2, q3, q4, q5)
+            PrintResult(predictTrip)
 
         def Question1_5(q1, q2, q3, q4):
             def setBenz():
@@ -112,10 +112,10 @@ class City:
                 destryAll()
                 Question1_5(q1, q2, q3, ChoiceQ1_4)
 
-            l1 = Label(frame, text="Quale tipo di trazione", background=ColorBttn, foreground="#43a047",
-                       font=("Helvetica", 60))
-            l2 = Label(frame, text="preferisci?", background='#c8e6c9', foreground="#43a047",
+            l1 = Label(frame, text="Quale tipo di trazione preferisci?", background=ColorBttn, foreground="#43a047",
                        font=("Helvetica", 50))
+            l2 = Label(frame, text="Consiglio posteriore", background='#c8e6c9', foreground="#43a047",
+                       font=("Helvetica", 20))
 
             l1.grid(row=0, column=4)
             l2.grid(row=1, column=4)
@@ -156,10 +156,10 @@ class City:
                 destryAll()
                 Question1_4(q1, q2, ChoiceQ1_3)
 
-            l1 = Label(frame, text="Vuoi che sia potente?", background=ColorBttn, foreground="#43a047",
+            l1 = Label(frame, text="Preferisci un auto con", background=ColorBttn, foreground="#43a047",
                        font=("Helvetica", 60))
-            l2 = Label(frame, text="AdEs. Per trasportare merci", background='#c8e6c9', foreground="#43a047",
-                       font=("Helvetica", 20))
+            l2 = Label(frame, text="assetto basso?", background='#c8e6c9', foreground="#43a047",
+                       font=("Helvetica", 50))
 
             l1.grid(row=0, column=4)
             l2.grid(row=1, column=4)
@@ -214,9 +214,9 @@ class City:
                 b1.destroy()
                 b2.destroy()
 
-        Question1_2("citta")
+        Question1_2("trip")
         mainloop()
 
     def __init__(self, frame):
         frame.grid_forget()
-        City.CityQuestion(self, frame)
+        Race.RaceQuestion(self, frame)
