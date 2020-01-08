@@ -1,6 +1,8 @@
 from tkinter import *
 from PIL import ImageTk, Image
 from Gui_Ques.City import City
+from Gui_Ques.Trip import Trip
+
 
 class Decision:
 
@@ -25,12 +27,13 @@ class Decision:
             def setViaggiare():
                 ChoiceQ1 = "viaggio"
                 destryAll()
-                #Question1_2(ChoiceQ1)
+                # Question1_2(ChoiceQ1)
+                Trip(frame)
 
             def setSvago():
                 ChoiceQ1 = "svago"
                 destryAll()
-                #Question1_2(ChoiceQ1)
+                # Question1_2(ChoiceQ1)
 
             l1 = Label(frame, text="Per cosa utilizzerai", background='#c8e6c9', foreground="#43a047",
                        font=("Helvetica", 60))
