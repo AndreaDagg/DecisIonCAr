@@ -24,19 +24,27 @@ class DecisionML:
         carsData = carsData.drop('peso', axis=1)
         carsData = carsData.drop('symboling', axis=1)
 
+
+
+        # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
+        print(F"Esempi di partenza (!Wne): {carsData.shape}")
+
+        #print(mediaCitta)
+
+        if q3 == True:
+            Lunghezza = 165
+        else:
+            Lunghezza = 160
+
+        carsData = carsData.drop(carsData[(carsData.mpgcitta < 24)].index)
+        carsData = carsData.drop(carsData[(carsData.lunghezza > Lunghezza)].index)
         mediaCitta = carsData['mpgcitta'].mean()
         mediaLunghezza = carsData['lunghezza'].mean()
         mediaLarghezza = carsData['larghezza'].mean()
         mediaCilindrata = carsData['cilindrata'].mean()
         mediaCavalli = carsData['cavalli'].mean()
 
-        # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
-        print(F"Esempi di partenza (!Wne): {carsData.shape}")
-
-        carsData = carsData.drop(
-            carsData[(carsData.mpgcitta > mediaCitta) & (carsData.lunghezza > mediaLunghezza)].index)
-        mediaCitta = carsData['mpgcitta'].mean()
-        mediaLunghezza = carsData['lunghezza'].mean()
+        print(mediaCitta)
 
         data_tree = carsData
 
@@ -114,7 +122,6 @@ class DecisionML:
         predizione = tree.predict([value_list])
 
         print(F"Predizione: {predizione[0]}")
-
 
         os.environ['PATH'] = os.environ['PATH'] + ';' + os.environ['CONDA_PREFIX'] + r"\Library\bin\graphviz"
         export_graphviz(tree, out_file="treecity.dot", feature_names=None, rounded=True, precision=2,

@@ -54,7 +54,7 @@ class Decision:
                         font=('Courrier', '20'),
                         foreground=ColorBttnTxT)
 
-            b3 = Button(frame, text="Performance ", width=15, background=ColorBttn,
+            b3 = Button(frame, text="Entrambi ", width=15, background=ColorBttn,
                         command=setSvago,
                         font=('Courrier', '20'),
                         foreground=ColorBttnTxT)

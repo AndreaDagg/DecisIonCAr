@@ -4,3 +4,8 @@ pip install pandas
 pip install sklearn
 pip install Pillow
 conda install graphvz
+
+
+TODO: Modificare il fatto del prezzo tra 0 e 1 e farlo inserire
+
+TODO: Vedere se è gestito bene il fatto che le auto fanno tun tot di miglio con un galone forse non hai ragionato così
