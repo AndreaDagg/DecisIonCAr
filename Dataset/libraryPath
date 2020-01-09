@@ -6,6 +6,11 @@ pip install Pillow
 conda install graphvz
 
 
-TODO: Modificare il fatto del prezzo tra 0 e 1 e farlo inserire
+#TODO: Modificare il fatto del prezzo tra 0 e 1 e farlo inserire
 
-TODO: Vedere se è gestito bene il fatto che le auto fanno tun tot di miglio con un galone forse non hai ragionato così
+#TODO: Vedere se è gestito bene il fatto che le auto fanno tun tot di miglio con un galone forse non hai ragionato così
+
+TODO: In Città se seleziono un auto potente da nissan Space. Valutare se la lunghezza dei veicoli passata e tagliata
+      è appropriata per effettuare il taglio.
+
+TODO: Controllare le altre classi.
