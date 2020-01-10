@@ -70,9 +70,6 @@ class City:
 
             def destryAll():
                 l1.destroy()
-                # l2.destroy()
-                # b1.destroy()
-                # b2.destroy()
                 insertPrice.destroy()
                 b3.destroy()
 

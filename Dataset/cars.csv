@@ -103,8 +103,8 @@ symboling,marca,carburante,aspirazione,porte,trazione,lunghezza,larghezza,altezz
 0,nissan X-Trail,gas,std,4,fwd,181.7,66.5,56.1,3095,4,181,91,26,31,23499
 0,nissan X-Trail,gas,std,4,fwd,184.6,66.5,56.1,3296,4,181,91,26,31,24399
 0,nissan X-Trail,gas,std,4,fwd,184.6,66.5,56.1,3060,4,181,91,26,31,23499
-3,nissan Qashqai ,gas,std,2,rwd,170.7,67.9,55.7,3071,4,181,90,25,31,21199
-3,nissan Qashqai ,gas,turbo,2,rwd,170.7,67.9,56.7,3139,4,181,90,25,31,21699
+3,nissan Qashqai ,gas,std,4,rwd,170.7,67.9,55.7,3071,4,181,90,25,31,21199
+3,nissan Qashqai ,gas,turbo,4,rwd,170.7,67.9,56.7,3139,4,181,90,25,31,21699
 1,nissan GTR,gas,std,2,rwd,168.5,67.9,49.7,3139,6,181,110,15,24,108399
 0,peugot 208,gas,std,4,rwd,166.7,68.4,56.7,3020,4,120,92,24,29,11900
 0,peugot 3008,diesel,turbo,4,rwd,186.7,68.4,56.7,3197,4,152,95,25,33,23200

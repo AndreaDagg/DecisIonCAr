@@ -8,6 +8,8 @@ from sklearn.metrics import accuracy_score
 
 
 class DecisionML:
+    def __init__(self):
+        print()
 
     def Decison(self, q1, q2, q3, q4, q5):
         print(F"Choices: {q1} - {q2} - {q3} - {q4} - {q5}")
