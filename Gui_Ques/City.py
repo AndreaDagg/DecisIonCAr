@@ -47,6 +47,47 @@ class City:
             a = DecisionTreeCity.DecisionML.Decison("self", q1, q2, q3, q4, q5)
             PrintResult(a)
 
+        def Question1_6(q1, q2, q3, q4):
+            enterprice = StringVar(value="")
+
+            def setPrice():
+                ChoiceQ1_6 = enterprice.get()
+                destryAll()
+                CallMachineLearnng(q1, q2, q3, q4, ChoiceQ1_6)
+
+            l1 = Label(frame, text="Quale prezzo preferiresti?", background=ColorBttn, foreground="#43a047",
+                       font=("Helvetica", 60))
+            # l2 = Label(frame, text="preferisci?", background='#c8e6c9', foreground="#43a047",
+            # font=("Helvetica", 50))
+
+            l1.grid(row=0, column=4)
+            # l2.grid(row=1, column=4)
+            # b1 = Button(frame, text="Benzina", width=15, background=ColorBttn,
+            # command=setBenz,
+            # font=('Courrier', '20'),
+            # foreground=ColorBttnTxT)
+
+            # b2 = Button(frame, text="Diesel", width=15, background=ColorBttn,
+            # command=setDis,
+            # font=('Courrier', '20'),
+            # foreground=ColorBttnTxT)
+
+            b3 = Button(frame, text="Inserisci", width=15, background=ColorBttn,
+                        command=setPrice(),
+                        font=('Courrier', '20'),
+                        foreground=ColorBttnTxT)
+
+            #b1.grid(row=2, column=4)
+            #b2.grid(row=3, column=4)
+            #b3.grid(row=4, column=4)
+
+            def destryAll():
+                l1.destroy()
+                #l2.destroy()
+                #b1.destroy()
+                #b2.destroy()
+                b3.destroy()
+
         def Question1_5(q1, q2, q3, q4):
             def setBenz():
                 ChoiceQ1_5 = "BENZ"
