@@ -18,7 +18,7 @@ symboling,marca,carburante,aspirazione,porte,trazione,lunghezza,larghezza,altezz
 0,bmw serie 8,gas,std,2,rwd,193.8,67.9,53.7,3380,6,209,182,16,22,121315
 0,bmw serie 8 Coupè,gas,std,2,rwd,197,70.9,56.3,3505,6,209,182,15,20,136880
 2,chevrolet spark,gas,std,4,fwd,141.1,60.3,53.2,1488,3,61,48,27,33,7151
-1,chevrolet captiva,gas,std,2,fwd,155.9,63.6,57,1874,4,90,70,28,33,15295
+1,chevrolet captiva,gas,std,2,fwd,175.9,63.6,57,1874,4,90,70,28,33,15295
 0,chevrolet cruze,gas,std,4,fwd,158.8,63.6,52,1909,4,90,70,27,33,16575
 1,dodge VIPER,gas,std,2,fwd,147.3,63.8,50.8,1876,6,119,148,14,23,85572
 1,dodge VIPER,gas,std,2,fwd,147.3,63.8,50.8,1876,6,1199,128,14,23,96377
@@ -74,7 +74,7 @@ symboling,marca,carburante,aspirazione,porte,trazione,lunghezza,larghezza,altezz
 3,mercedes-benz AMG GT,gas,std,2,rwd,115.3,70.5,50.8,3685,8,234,155,17,26,105056
 0,mercedes-benz AMG GT,gas,std,2,rwd,155.1,71.7,56.7,3900,8,308,184,17,26,100960
 1,mercedes-benz AMG GT,gas,std,2,rwd,155.2,72,25.4,3715,8,304,184,17,26,105400
-1,Fiat Panda,gas,turbo,4,rwd,154.4,68,55.8,2910,4,140,90,29,32,9503
+1,Fiat Panda,gas,turbo,4,rwd,159.4,68,55.8,2910,4,140,90,29,32,9503
 2,mitsubishi Space,gas,std,4,fwd,152.3,64.4,52.8,1918,4,70,68,26,32,9389
 2,mitsubishi Space,gas,std,4,fwd,153.3,64.4,52.8,1944,4,70,68,26,32,9189
 2,mitsubishi Space,gas,std,4,fwd,153.3,64.4,53.8,2004,4,70,68,26,32,9669
@@ -90,7 +90,7 @@ symboling,marca,carburante,aspirazione,porte,trazione,lunghezza,larghezza,altezz
 -1,mitsubishi Eclipse,gas,std,4,fwd,172.4,65.4,55.6,2403,4,110,92,23,30,23979
 1,nissan Leaf,gas,std,4,fwd,165.3,63.8,54.5,1889,4,100,69,21,37,35499
 1,nissan Micra,diesel,std,2,fwd,155.3,63.8,54.5,2017,4,91,55,29,35,9099
-1,nissan Micra,gas,std,2,fwd,155.3,63.8,54.5,1918,4,97,69,29,35,9649
+1,nissan Micra,gas,std,4,fwd,155.3,63.8,54.5,1918,4,97,69,29,35,9649
 1,nissan Leaf,gas,std,4,fwd,165.3,63.8,54.5,1938,4,97,69,31,37,36849
 1,nissan Qashqai ,gas,std,4,fwd,170.2,63.8,56.5,2024,4,97,90,27,27,27349
 1,nissan Leaf,gas,std,4,fwd,165.3,63.8,54.5,1951,4,97,69,23,23,37299
@@ -142,9 +142,9 @@ symboling,marca,carburante,aspirazione,porte,trazione,lunghezza,larghezza,altezz
 0,subaru WRX,gas,std,4,fwd,163.5,65.4,53,2455,8,108,94,20,31,40198
 0,subaru XV,gas,std,4,4wd,153.6,65.4,56.9,2420,4,108,82,23,29,28013
 0,subaru WRX,gas,turbo,4,4wd,173.6,65.4,52.9,2650,4,108,111,20,25,41694
-1,toyota AYGO,gas,std,2,fwd,158.7,63.6,54.5,1985,4,92,62,35,39,15348
-1,toyota AYGO,gas,std,2,fwd,158.7,63.6,54.5,2040,4,92,62,31,38,16338
-1,toyota AYGO,gas,std,4,fwd,158.7,63.6,54.5,2015,4,92,62,31,38,16488
+1,toyota AYGO,gas,std,2,fwd,156.7,63.6,54.5,1985,4,92,62,35,39,15348
+1,toyota AYGO,gas,std,2,fwd,156.7,63.6,54.5,2040,4,92,62,31,38,16338
+1,toyota AYGO,gas,std,4,fwd,156.7,63.6,54.5,2015,4,92,62,31,38,16488
 0,toyota AYGO,gas,std,4,fwd,155.7,63.6,54.1,2280,4,92,62,31,37,16918
 0,toyota TRUCK,gas,std,4,4wd,174.7,63.6,59.1,2290,4,92,108,19,28,47898
 0,toyota TRUCK,gas,std,4,4wd,174.7,63.6,59.1,3110,4,92,107,21,28,38778

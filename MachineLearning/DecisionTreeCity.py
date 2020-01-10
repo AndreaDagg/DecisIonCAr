@@ -12,6 +12,8 @@ class DecisionML:
     def Decison(self, q1, q2, q3, q4, q5):
         print(F"Choices: {q1} - {q2} - {q3} - {q4} - {q5}")
         DELETE = -1
+        Lunghezza = 160
+        ConsumoCitta = 24
         carsData = pd.read_csv("Dataset/cars.csv")
         # print(carsData.info())
         # print(carsData.head())
@@ -30,14 +32,14 @@ class DecisionML:
         print(F"Esempi di partenza (!Wne): {carsData.shape}")
 
         #print(mediaCitta)
-
-        if q3 == True:
-            Lunghezza = 165
+        carsData = carsData.drop(carsData[(carsData.mpgcitta < ConsumoCitta)].index)
+        if q3 == True: #nonUtilitaria
+            carsData = carsData.drop(carsData[(carsData.lunghezza < Lunghezza)].index)
         else:
-            Lunghezza = 160
+            carsData = carsData.drop(carsData[(carsData.lunghezza > Lunghezza)].index)
 
-        carsData = carsData.drop(carsData[(carsData.mpgcitta < 24)].index)
-        carsData = carsData.drop(carsData[(carsData.lunghezza > Lunghezza)].index)
+
+
         mediaCitta = carsData['mpgcitta'].mean()
         mediaLunghezza = carsData['lunghezza'].mean()
         mediaLarghezza = carsData['larghezza'].mean()

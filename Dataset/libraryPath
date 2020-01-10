@@ -1,4 +1,4 @@
-With Anaconda Python interpeter
+﻿With Anaconda Python interpeter
 
 pip install pandas
 pip install sklearn
@@ -14,3 +14,4 @@ TODO: In Città se seleziono un auto potente da nissan Space. Valutare se la lun
       è appropriata per effettuare il taglio.
 
 TODO: Controllare le altre classi.
+TODO: Aggiungere possibilità di inserire una preferenza sul prezzo, dato che è stato cabiato.
