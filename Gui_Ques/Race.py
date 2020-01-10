@@ -42,21 +42,47 @@ class Race:
             l3.grid(row=2, column=4)
             b1.grid(row=4, column=4)
 
-        def CallMachineLearnng(q1, q2, q3, q4, q5):
+        def CallMachineLearnng(q1, q2, q3, q4, q5, q6):
             from MachineLearning import DecisionTreeRace
-            predictTrip = DecisionTreeRace.DecisionML.Decison("self", q1, q2, q3, q4, q5)
+            predictTrip = DecisionTreeRace.DecisionML.Decison("self", q1, q2, q3, q4, q5, q6)
             PrintResult(predictTrip)
+
+        def Question1_6(q1, q2, q3, q4, q5):
+            enterprice = StringVar(value="euro")
+
+            def setPrice():
+                ChoiceQ1_6 = enterprice.get()
+                destryAll()
+                CallMachineLearnng(q1, q2, q3, q4, q5, ChoiceQ1_6)
+
+            l1 = Label(frame, text="Quale prezzo preferiresti?", background=ColorBttn, foreground="#43a047",
+                       font=("Helvetica", 50))
+            insertPrice = Entry(frame, textvariable=enterprice, background="#e8f5e9", foreground=ColorBttnTxT,
+                                font=("Helvetica", 30))
+            l1.grid(row=0, column=4)
+            insertPrice.grid(row=1, column=4)
+            b3 = Button(frame, text="Inserisci", width=15, background=ColorBttn,
+                        command=setPrice,
+                        font=('Courrier', '20'),
+                        foreground=ColorBttnTxT)
+
+            b3.grid(row=2, column=4)
+
+            def destryAll():
+                l1.destroy()
+                insertPrice.destroy()
+                b3.destroy()
 
         def Question1_5(q1, q2, q3, q4):
             def setBenz():
                 ChoiceQ1_5 = "BENZ"
                 destryAll()
-                CallMachineLearnng(q1, q2, q3, q4, ChoiceQ1_5)
+                Question1_6(q1, q2, q3, q4, ChoiceQ1_5)
 
             def setDis():
                 ChoiceQ1_5 = "DIS"
                 destryAll()
-                CallMachineLearnng(q1, q2, q3, q4, ChoiceQ1_5)
+                Question1_6(q1, q2, q3, q4, ChoiceQ1_5)
 
             def setNotCarb():
                 ChoiceQ1_5 = "NOTCARB"

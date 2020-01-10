@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score
 
 class DecisionML:
 
-    def Decison(self, q1, q2, q3, q4, q5):
+    def Decison(self, q1, q2, q3, q4, q5, q6):
         print(F"Choices: {q1} - {q2} - {q3} - {q4} - {q5}")
         DELETE = -1
         MINCILINDRI = 6
@@ -35,13 +35,11 @@ class DecisionML:
         # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
         print(F"Esempi di partenza (!Wne): {carsData.shape}")
 
-
         carsData = carsData.drop(carsData[(carsData.cilindri < MINCILINDRI)].index)
         carsData = carsData.drop(carsData[(carsData.cilindrata < 100)].index)
         carsData = carsData.drop(carsData[(carsData.cavalli < mediaCavalli)].index)
         carsData = carsData.drop(carsData[(carsData.marca == "toyota")].index)
         carsData = carsData.drop(carsData[(carsData.marca == "nissan")].index)
-
 
         mediaCilindrata = carsData['cilindrata'].mean()
         mediaCilindri = carsData['cilindri'].mean()

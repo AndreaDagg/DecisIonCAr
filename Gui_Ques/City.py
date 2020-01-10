@@ -44,11 +44,11 @@ class City:
 
         def CallMachineLearnng(q1, q2, q3, q4, q5, q6):
             from MachineLearning import DecisionTreeCity
-            a = DecisionTreeCity.DecisionML.Decison("self", q1, q2, q3, q4, q5)
-            PrintResult(a)
+            predizione = DecisionTreeCity.DecisionML.Decison("self", q1, q2, q3, q4, q5, q6)
+            PrintResult(predizione)
 
         def Question1_6(q1, q2, q3, q4, q5):
-            enterprice = StringVar(value="")
+            enterprice = StringVar(value="euro")
 
             def setPrice():
                 ChoiceQ1_6 = enterprice.get()

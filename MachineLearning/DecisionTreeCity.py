@@ -11,7 +11,7 @@ class DecisionML:
     def __init__(self):
         print()
 
-    def Decison(self, q1, q2, q3, q4, q5):
+    def Decison(self, q1, q2, q3, q4, q5, Prezzo):
         print(F"Choices: {q1} - {q2} - {q3} - {q4} - {q5}")
         DELETE = -1
         Lunghezza = 160
@@ -21,7 +21,6 @@ class DecisionML:
         # print(carsData.head())
 
         # Eliminaimo le colonne non utli dal dataset
-        carsData = carsData.drop('prezzo', axis=1)
         carsData = carsData.drop('cilindri', axis=1)
         carsData = carsData.drop('altezza', axis=1)
         carsData = carsData.drop('mpgautostrada', axis=1)
@@ -40,15 +39,14 @@ class DecisionML:
         else:
             carsData = carsData.drop(carsData[(carsData.lunghezza > Lunghezza)].index)
 
-
-
         mediaCitta = carsData['mpgcitta'].mean()
         mediaLunghezza = carsData['lunghezza'].mean()
         mediaLarghezza = carsData['larghezza'].mean()
         mediaCilindrata = carsData['cilindrata'].mean()
         mediaCavalli = carsData['cavalli'].mean()
 
-        print(mediaCitta)
+        if not isinstance(Prezzo, int):
+            Prezzo = carsData['prezzo'].mean()
 
         data_tree = carsData
 
@@ -66,13 +64,13 @@ class DecisionML:
             data_tree = pd.get_dummies(data_tree, columns=["aspirazione"])
 
         if q4 == "ANT":
-            trazione = [0, 1, 0]
+            trazione = [1,0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         elif q4 == "POST":
-            trazione = [0, 0, 1]
+            trazione = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         elif q3 == True:
-            trazione = [1, 0, 0]
+            trazione = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         else:
             trazione = DELETE
@@ -119,6 +117,7 @@ class DecisionML:
         if carburante != DELETE:
             value_list = value_list + carburante
         value_list = value_list + AspirazioneMotore
+        value_list = value_list + [Prezzo]
 
         print(data_tree.columns.tolist())
         print(value_list)

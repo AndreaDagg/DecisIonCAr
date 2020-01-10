@@ -2,15 +2,15 @@ symboling,marca,carburante,aspirazione,porte,trazione,lunghezza,larghezza,altezz
 3,alfa-romero Giulia Quadrifoglio,gas,std,2,rwd,168.8,64.1,48.8,2548,8,200,120,21,27,86495
 3,alfa-romero Giulia,gas,std,2,rwd,168.8,64.1,40.8,2548,6,130,111,21,27,60500
 1,alfa-romero Stelvio,gas,std,2,rwd,171.2,65.5,52.4,2823,6,152,154,19,26,50500
-2,audi A5,gas,std,4,fwd,176.6,66.2,54.3,2337,4,109,102,24,30,45950
-2,audi A5,gas,std,4,4wd,176.6,66.4,54.3,2824,5,136,115,18,22,45450
+2,audi A5,gas,std,4,rwd,176.6,66.2,54.3,2337,4,109,102,24,30,45950
+2,audi A5,gas,std,4,rwd,176.6,66.4,54.3,2824,5,136,115,18,22,45450
 2,audi A3,gas,std,2,fwd,177.3,66.3,53.1,2507,5,136,110,23,35,2550
 1,audi A6,gas,std,4,fwd,182.7,71.4,40.7,2844,6,136,110,19,25,57710
-1,audi A7,gas,std,4,fwd,182.7,71.4,55.7,2954,6,136,110,19,25,68920
-1,audi TT,gas,turbo,2,fwd,162.7,71.4,40.9,3086,5,131,140,17,20,73875
-0,audi A3,gas,turbo,2,4wd,178.2,67.9,52,3053,5,131,160,16,22,21000
-2,bmw 125,gas,std,2,rwd,176.8,64.8,40.3,2395,4,108,101,23,29,26430
-0,bmw 125,gas,std,4,rwd,176.8,64.8,40.3,2395,4,108,101,23,29,26925
+1,audi A7,gas,std,4,rwd,182.7,71.4,55.7,2954,6,136,110,19,25,68920
+1,audi TT,gas,turbo,2,rwd,162.7,71.4,40.9,3086,5,131,140,17,20,73875
+0,audi A3,gas,turbo,2,fwd,168.2,67.9,52,3053,5,131,160,26,31,21000
+2,bmw 125,gas,std,2,rwd,176.8,64.8,40.3,2395,4,108,101,23,31,26430
+0,bmw 125,gas,std,4,rwd,176.8,64.8,40.3,2395,4,108,101,23,31,26925
 0,bmw M3,gas,std,2,rwd,176.8,64.8,54.3,2710,6,164,121,21,28,40970
 0,bmw M3,gas,std,4,rwd,176.8,64.8,54.3,2765,6,164,121,21,28,38105
 1,bmw Z7,gas,std,4,rwd,189,66.9,55.7,3055,8,164,121,20,25,95565
@@ -42,10 +42,10 @@ symboling,marca,carburante,aspirazione,porte,trazione,lunghezza,larghezza,altezz
 0,honda CRV,gas,std,4,fwd,175.4,62.5,55.1,2372,4,110,86,27,33,29295
 0,honda CRV,gas,std,4,fwd,175.4,65.2,55.1,2465,4,110,95,24,28,22945
 1,honda CRV,gas,std,4,fwd,169.1,66,55,2293,4,110,95,25,31,30345
-0,isuzu D-Max,gas,std,4,rwd,170.7,61.8,56.5,2337,4,111,78,24,32,2785
-1,isuzu D-Max,gas,std,2,fwd,185.9,63.6,56,1874,4,90,70,24,32,21000
-0,isuzu D-Max,gas,std,4,fwd,185.9,63.6,56,1909,4,90,70,24,32,21000
-2,isuzu D-Max,gas,std,2,rwd,172.6,65.2,56.4,2734,4,119,90,24,32,21048
+0,isuzu D-Max,gas,std,4,rwd,170.7,61.8,56.5,2337,4,111,78,24,27,2785
+1,isuzu D-Max,gas,std,2,fwd,185.9,63.6,56,1874,4,90,70,24,27,21000
+0,isuzu D-Max,gas,std,4,fwd,185.9,63.6,56,1909,4,90,70,24,27,21000
+2,isuzu D-Max,gas,std,2,rwd,172.6,65.2,56.4,2734,4,119,90,24,28,21048
 0,jaguar XF,gas,std,4,rwd,189.6,69.6,52.8,4066,6,258,176,13,29,62250
 0,jaguar XF,gas,std,4,rwd,189.6,69.6,52.8,4066,6,258,176,13,26,65550
 0,jaguar F-Type,gas,std,2,rwd,191.7,70.6,47.8,3950,8,326,262,13,27,66000
@@ -122,7 +122,7 @@ symboling,marca,carburante,aspirazione,porte,trazione,lunghezza,larghezza,altezz
 3,porsche 911 Coupè,gas,std,2,rwd,168.9,65,51.6,2756,6,194,207,12,23,134028
 3,porsche 911,gas,std,2,rwd,168.9,65,51.6,2800,6,194,207,12,23,137028
 1,porsche 911 S,gas,std,2,rwd,165.7,72.3,50.5,3366,8,203,288,12,24,151000
-0,renault Clio,gas,std,4,fwd,161.5,66.5,55.2,2579,4,132,80,23,38,16295
+0,renault Clio,gas,std,4,fwd,161.5,66.5,55.2,2579,4,132,92,23,38,16295
 2,renault Twingo,gas,std,2,fwd,156.8,66.6,50.5,2460,4,132,64,30,33,10895
 3,saab 9-3,gas,std,2,fwd,166.6,66.5,56.1,2658,4,121,110,21,28,11850
 2,saab 9-3,gas,std,4,fwd,166.6,66.5,56.1,2695,4,121,110,21,28,12170
@@ -132,22 +132,22 @@ symboling,marca,carburante,aspirazione,porte,trazione,lunghezza,larghezza,altezz
 2,saab 9-4X,gas,turbo,4,fwd,184.6,66.5,58.1,2847,6,121,160,19,26,28620
 2,subaru Forester,gas,std,2,fwd,186.9,63.4,58.7,2050,4,97,89,31,36,45118
 2,subaru Forester,gas,std,2,fwd,187.9,63.6,58.7,2120,6,108,83,26,31,47053
-2,subaru XV,gas,std,2,4wd,157.3,63.8,55.7,2240,4,108,73,26,31,27603
+2,subaru XV,gas,std,2,rwd,157.3,63.8,55.7,2240,4,108,73,26,31,27603
 0,subaru Levorg,gas,std,4,fwd,172,65.4,51.5,2145,6,108,82,32,37,37126
 0,subaru Levorg,gas,std,4,fwd,172,65.4,51.5,2190,4,108,82,28,33,37775
 0,subaru WRX,gas,std,4,fwd,163,65.4,52.5,2340,8,108,94,20,32,49960
-0,subaru XV,gas,std,4,4wd,172,65.4,54.3,2385,4,108,82,24,25,29233
-0,subaru WRX,gas,turbo,4,4wd,163,65.4,52.3,2510,4,108,111,20,31,41259
+0,subaru XV,gas,std,4,rwd,172,65.4,54.3,2385,4,108,82,24,25,29233
+0,subaru WRX,gas,turbo,4,rwd,163,65.4,52.3,2510,4,108,111,20,31,41259
 0,subaru Levorg,gas,std,4,fwd,173.5,65.4,53,2290,4,108,82,28,32,31463
 0,subaru WRX,gas,std,4,fwd,163.5,65.4,53,2455,8,108,94,20,31,40198
-0,subaru XV,gas,std,4,4wd,153.6,65.4,56.9,2420,4,108,82,23,29,28013
-0,subaru WRX,gas,turbo,4,4wd,173.6,65.4,52.9,2650,4,108,111,20,25,41694
+0,subaru XV,gas,std,4,rwd,153.6,65.4,56.9,2420,4,108,82,23,29,28013
+0,subaru WRX,gas,turbo,4,rwd,173.6,65.4,52.9,2650,4,108,111,20,25,41694
 1,toyota AYGO,gas,std,2,fwd,156.7,63.6,54.5,1985,4,92,62,35,39,15348
 1,toyota AYGO,gas,std,2,fwd,156.7,63.6,54.5,2040,4,92,62,31,38,16338
 1,toyota AYGO,gas,std,4,fwd,156.7,63.6,54.5,2015,4,92,62,31,38,16488
 0,toyota AYGO,gas,std,4,fwd,155.7,63.6,54.1,2280,4,92,62,31,37,16918
-0,toyota TRUCK,gas,std,4,4wd,174.7,63.6,59.1,2290,4,92,108,19,28,47898
-0,toyota TRUCK,gas,std,4,4wd,174.7,63.6,59.1,3110,4,92,107,21,28,38778
+0,toyota TRUCK,gas,std,4,rwd,174.7,63.6,59.1,2290,4,92,108,19,28,47898
+0,toyota TRUCK,gas,std,4,rwd,174.7,63.6,59.1,3110,4,92,107,21,28,38778
 0,toyota Yaris,gas,std,4,fwd,146.3,61.4,53,2081,4,92,70,30,37,16938
 0,toyota Yaris,gas,std,4,fwd,156.3,62.4,52.8,2109,4,90,70,30,37,17198
 0,toyota Yaris,diesel,std,4,fwd,146.3,62.4,53,2275,4,90,56,34,36,17898
@@ -177,7 +177,7 @@ symboling,marca,carburante,aspirazione,porte,trazione,lunghezza,larghezza,altezz
 2,volkswagen Polo,diesel,std,2,fwd,171.7,65.5,55.7,2261,4,97,52,27,30,17775
 2,volkswagen Golf,gas,std,2,fwd,171.7,65.5,55.7,2209,4,109,85,22,27,27975
 2,volkswagen Polo,diesel,std,4,fwd,171.7,65.5,55.7,2264,4,97,52,27,30,17995
-2,volkswagen Golf,gas,std,4,fwd,171.7,65.5,55.7,2212,4,109,85,22,27,28195
+2,volkswagen Golf,gas,std,4,fwd,171.7,65.5,55.7,2212,4,109,95,22,27,28195
 2,volkswagen Tiguan,gas,std,4,fwd,171.7,65.5,59.7,2275,4,109,100,27,34,38495
 2,volkswagen Polo,diesel,turbo,4,fwd,171.7,65.5,55.7,2319,4,97,68,27,30,19495
 2,volkswagen Golf,gas,std,4,fwd,171.7,65.5,55.7,2300,4,109,100,22,27,29995
