@@ -2,7 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 from Gui_Ques.City import City
 from Gui_Ques.Trip import Trip
-from Gui_Ques.Race import Race
+from Gui_Ques.All import Race
 
 
 class Decision:

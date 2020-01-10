@@ -9,8 +9,8 @@ from sklearn.metrics import accuracy_score
 
 class DecisionML:
 
-    def Decison(self, q1, q2, q3, q4, q5, q6):
-        print(F"Choices: {q1} - {q2} - {q3} - {q4} - {q5}")
+    def Decison(self, q1, q2, q3, q4, q5, Prezzo):
+        print(F"Choices: {q1} - {q2} - {q3} - {q4} - {q5} - Prezzo: {Prezzo}")
         DELETE = -1
         MINCILINDRI = 6
         carsData = pd.read_csv("Dataset/cars.csv")
@@ -18,64 +18,80 @@ class DecisionML:
         # print(carsData.head())
 
         # Eliminaimo le colonne non utli dal dataset
-        carsData = carsData.drop('prezzo', axis=1)
         carsData = carsData.drop('larghezza', axis=1)
-        carsData = carsData.drop('mpgautostrada', axis=1)
-        carsData = carsData.drop('mpgcitta', axis=1)
+        carsData = carsData.drop('cilindri', axis=1)
         carsData = carsData.drop('peso', axis=1)
         carsData = carsData.drop('symboling', axis=1)
         carsData = carsData.drop('aspirazione', axis=1)
-
-        mediaCitta = carsData['cilindri'].mean()
-        mediaLunghezza = carsData['lunghezza'].mean()  # Valutare se drop
-        mediaCilindrata = carsData['cilindrata'].mean()
-        mediaCavalli = carsData['cavalli'].mean()
-        mediaAltezza = carsData['altezza'].mean()
+        carsData = carsData.drop('cavalli', axis=1)
 
         # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
         print(F"Esempi di partenza (!Wne): {carsData.shape}")
 
-        carsData = carsData.drop(carsData[(carsData.cilindri < MINCILINDRI)].index)
-        carsData = carsData.drop(carsData[(carsData.cilindrata < 100)].index)
-        carsData = carsData.drop(carsData[(carsData.cavalli < mediaCavalli)].index)
-        carsData = carsData.drop(carsData[(carsData.marca == "toyota")].index)
-        carsData = carsData.drop(carsData[(carsData.marca == "nissan")].index)
+        # carsData = carsData.drop(carsData[(carsData.altezza <)].index)
 
+        mediaCitta = carsData['mpgcitta'].mean()
+        carsData = carsData.drop(carsData[(carsData.mpgcitta < mediaCitta)].index)
+
+        mediaAutostrada = carsData['mpgautostrada'].mean()
+        carsData = carsData.drop(carsData[(carsData.mpgautostrada < mediaAutostrada)].index)
+
+        mediaLunghezza = carsData['lunghezza'].mean()  # Valutare se drop
         mediaCilindrata = carsData['cilindrata'].mean()
-        mediaCilindri = carsData['cilindri'].mean()
-        mediaCavalli = carsData['cavalli'].mean()
 
         # Setto i paramentri impostati nell Gui ed effettuo Why not encoding dove necessario
         if q2 == "Three":
             porte = 2
+            # carsData = carsData.drop(carsData[(carsData.lunghezza == 4)].index)
+            carsData = carsData.drop(carsData[(carsData.cilindrata > mediaCilindrata)].index)
         else:
             porte = 4
+            # carsData = carsData.drop(carsData[(carsData.lunghezza == 2)].index)
+            carsData = carsData.drop(carsData[(carsData.cilindrata < mediaCilindrata)].index)
 
         if q3 == True:
-            carsData = carsData.drop(carsData[(carsData.altezza < mediaAltezza)].index)
-            mediaAltezza = carsData['altezza'].mean()
+            carsData = carsData.drop(carsData[(carsData.lunghezza < mediaLunghezza)].index)
+        else:
+            LungEsagerataCitta = 180
+            carsData = carsData.drop(carsData[(carsData.lunghezza > LungEsagerataCitta)].index)
 
+        if not isinstance(Prezzo, int):
+            Prezzo = carsData['prezzo'].mean()
         data_tree = carsData
 
-        if q4 == "ANT":
+        if (q4 == "ANT") and ('rwd' in data_tree['trazione'].values) and ('fwd' in data_tree['trazione'].values):
+
             trazione = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
-        elif q4 == "POST":
+
+        elif (q4 == "POST") and ('rwd' in data_tree['trazione'].values) and ('fwd' in data_tree['trazione'].values):
+
             trazione = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         else:
             trazione = DELETE
             data_tree = data_tree.drop('trazione', axis=1)
 
-        if q5 == "BENZ":
+        if (q5 == "BENZ") and ('gas' in data_tree['carburante'].values) and (
+                'diesel' in data_tree['carburante'].values):
+
             carburante = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["carburante"])
-        elif q5 == "DIS":
+
+        elif (q5 == "DIS") and ('gas' in data_tree['carburante'].values) and (
+                'diesel' in data_tree['carburante'].values):
+
             carburante = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["carburante"])
+
         else:
             carburante = DELETE
             data_tree = data_tree.drop('carburante', axis=1)
+
+        mediaAutostrada = data_tree['mpgautostrada'].mean()
+        mediaCilindrata = data_tree['cilindrata'].mean()
+        mediaAltezza = data_tree['altezza'].mean()
+        print(data_tree.columns.tolist())
 
         # Costruisci l'albero decisionale
         from sklearn.tree import DecisionTreeClassifier
@@ -101,8 +117,7 @@ class DecisionML:
 
         print("ACCURACY: TRAIN=%.4f TEST=%.4f" % (accuracy_train, accuracy_test))
 
-        value_list = [porte, mediaLunghezza, mediaAltezza, mediaCilindri, mediaCilindrata,
-                      mediaCavalli]
+        value_list = [porte, mediaLunghezza, mediaAltezza, mediaCilindrata, mediaCitta, mediaAutostrada, Prezzo]
         # print(F"Porte {porte}, lung {mediaLunghezza} alte {mediaAltezza} cilind {mediaCilindri} cilindra {mediaCilindrata} cavall {mediaCavalli}")
         if trazione != DELETE:
             value_list = value_list + trazione

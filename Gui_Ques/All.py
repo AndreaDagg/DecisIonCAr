@@ -43,9 +43,9 @@ class Race:
             b1.grid(row=4, column=4)
 
         def CallMachineLearnng(q1, q2, q3, q4, q5, q6):
-            from MachineLearning import DecisionTreeRace
-            predictTrip = DecisionTreeRace.DecisionML.Decison("self", q1, q2, q3, q4, q5, q6)
-            PrintResult(predictTrip)
+            from MachineLearning import DecisionTreeAll
+            predizioneTrip = DecisionTreeAll.DecisionML.Decison("self", q1, q2, q3, q4, q5, q6)
+            PrintResult(predizioneTrip)
 
         def Question1_6(q1, q2, q3, q4, q5):
             enterprice = StringVar(value="euro")
@@ -87,7 +87,7 @@ class Race:
             def setNotCarb():
                 ChoiceQ1_5 = "NOTCARB"
                 destryAll()
-                CallMachineLearnng(q1, q2, q3, q4, ChoiceQ1_5)
+                Question1_6(q1, q2, q3, q4, ChoiceQ1_5)
 
             l1 = Label(frame, text="Quale tipo di carburante", background=ColorBttn, foreground="#43a047",
                        font=("Helvetica", 60))
@@ -138,14 +138,14 @@ class Race:
                 destryAll()
                 Question1_5(q1, q2, q3, ChoiceQ1_4)
 
-            l1 = Label(frame, text="Quale tipo di trazione preferisci?", background=ColorBttn, foreground="#43a047",
+            l1 = Label(frame, text="Quale tipo di trazione", background=ColorBttn, foreground="#43a047",
+                       font=("Helvetica", 60))
+            l2 = Label(frame, text="preferisci?", background='#c8e6c9', foreground="#43a047",
                        font=("Helvetica", 50))
-            l2 = Label(frame, text="Consiglio posteriore", background='#c8e6c9', foreground="#43a047",
-                       font=("Helvetica", 20))
 
             l1.grid(row=0, column=4)
             l2.grid(row=1, column=4)
-            b1 = Button(frame, text="Anterirore", width=15, background=ColorBttn,
+            b1 = Button(frame, text="Anteriore", width=15, background=ColorBttn,
                         command=setAnt,
                         font=('Courrier', '20'),
                         foreground=ColorBttnTxT)
@@ -182,9 +182,9 @@ class Race:
                 destryAll()
                 Question1_4(q1, q2, ChoiceQ1_3)
 
-            l1 = Label(frame, text="Preferisci un auto con", background=ColorBttn, foreground="#43a047",
+            l1 = Label(frame, text="Preferisci un auto di", background=ColorBttn, foreground="#43a047",
                        font=("Helvetica", 60))
-            l2 = Label(frame, text="assetto basso?", background='#c8e6c9', foreground="#43a047",
+            l2 = Label(frame, text="ridotte dimensioni?", background='#c8e6c9', foreground="#43a047",
                        font=("Helvetica", 50))
 
             l1.grid(row=0, column=4)
