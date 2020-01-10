@@ -42,67 +42,55 @@ class City:
             l3.grid(row=2, column=4)
             b1.grid(row=4, column=4)
 
-        def CallMachineLearnng(q1, q2, q3, q4, q5):
+        def CallMachineLearnng(q1, q2, q3, q4, q5, q6):
             from MachineLearning import DecisionTreeCity
             a = DecisionTreeCity.DecisionML.Decison("self", q1, q2, q3, q4, q5)
             PrintResult(a)
 
-        def Question1_6(q1, q2, q3, q4):
+        def Question1_6(q1, q2, q3, q4, q5):
             enterprice = StringVar(value="")
 
             def setPrice():
                 ChoiceQ1_6 = enterprice.get()
                 destryAll()
-                CallMachineLearnng(q1, q2, q3, q4, ChoiceQ1_6)
+                CallMachineLearnng(q1, q2, q3, q4, q5, ChoiceQ1_6)
 
             l1 = Label(frame, text="Quale prezzo preferiresti?", background=ColorBttn, foreground="#43a047",
-                       font=("Helvetica", 60))
-            # l2 = Label(frame, text="preferisci?", background='#c8e6c9', foreground="#43a047",
-            # font=("Helvetica", 50))
-
+                       font=("Helvetica", 50))
+            insertPrice = Entry(frame, textvariable=enterprice, background="#e8f5e9", foreground=ColorBttnTxT,
+                                font=("Helvetica", 30))
             l1.grid(row=0, column=4)
-            # l2.grid(row=1, column=4)
-            # b1 = Button(frame, text="Benzina", width=15, background=ColorBttn,
-            # command=setBenz,
-            # font=('Courrier', '20'),
-            # foreground=ColorBttnTxT)
-
-            # b2 = Button(frame, text="Diesel", width=15, background=ColorBttn,
-            # command=setDis,
-            # font=('Courrier', '20'),
-            # foreground=ColorBttnTxT)
-
+            insertPrice.grid(row=1, column=4)
             b3 = Button(frame, text="Inserisci", width=15, background=ColorBttn,
-                        command=setPrice(),
+                        command=setPrice,
                         font=('Courrier', '20'),
                         foreground=ColorBttnTxT)
 
-            #b1.grid(row=2, column=4)
-            #b2.grid(row=3, column=4)
-            #b3.grid(row=4, column=4)
+            b3.grid(row=2, column=4)
 
             def destryAll():
                 l1.destroy()
-                #l2.destroy()
-                #b1.destroy()
-                #b2.destroy()
+                # l2.destroy()
+                # b1.destroy()
+                # b2.destroy()
+                insertPrice.destroy()
                 b3.destroy()
 
         def Question1_5(q1, q2, q3, q4):
             def setBenz():
                 ChoiceQ1_5 = "BENZ"
                 destryAll()
-                CallMachineLearnng(q1, q2, q3, q4, ChoiceQ1_5)
+                Question1_6(q1, q2, q3, q4, ChoiceQ1_5)
 
             def setDis():
                 ChoiceQ1_5 = "DIS"
                 destryAll()
-                CallMachineLearnng(q1, q2, q3, q4, ChoiceQ1_5)
+                Question1_6(q1, q2, q3, q4, ChoiceQ1_5)
 
             def setNotCarb():
                 ChoiceQ1_5 = "NOTCARB"
                 destryAll()
-                CallMachineLearnng(q1, q2, q3, q4, ChoiceQ1_5)
+                Question1_6(q1, q2, q3, q4, ChoiceQ1_5)
 
             l1 = Label(frame, text="Quale tipo di carburante", background=ColorBttn, foreground="#43a047",
                        font=("Helvetica", 60))
