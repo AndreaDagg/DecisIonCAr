@@ -13,11 +13,11 @@ class ShowTree:
         def Home():
             Decision(frame)
 
-        frame.grid(row=0, column=0, columnspan=5, rowspan=5)
+        #frame.grid(row=0, column=0, columnspan=5, rowspan=5)
 
-        canvasN = Canvas(frame, width=1280, height=720)
+        canvasN = Canvas(frame, width=1230, height=660)
         img = Image.open(pathPng)
-        img = img.resize((1280, 720), Image.ANTIALIAS)
+        img = img.resize((1230, 660), Image.ANTIALIAS)
         imageN = ImageTk.PhotoImage(img)
         canvasN.create_image(0, 0, anchor=NW, image=imageN)
         canvasN.grid(row=0, column=0, columnspan=5, rowspan=5)
@@ -30,7 +30,7 @@ class ShowTree:
         mainloop()
 
     def __init__(self, frame, callBy):
-        frame.grid_forget()
+        #frame.grid_forget()
 
         if callBy == "RACE":
             ShowTree.show(self, frame, "treerace.png")

@@ -8,21 +8,34 @@ from sklearn.metrics import accuracy_score
 
 
 class DecisionML:
+    def __init__(self):
+        print()
 
-    def Decison(self, q1, q2, q3, q4, q5):
+    def Decison(self, q1, q2, q3, q4, q5, Prezzo):
         print(F"Choices: {q1} - {q2} - {q3} - {q4} - {q5}")
         DELETE = -1
+        Lunghezza = 160
+        ConsumoCitta = 24
         carsData = pd.read_csv("Dataset/cars.csv")
         # print(carsData.info())
         # print(carsData.head())
 
         # Eliminaimo le colonne non utli dal dataset
-        carsData = carsData.drop('prezzo', axis=1)
         carsData = carsData.drop('cilindri', axis=1)
         carsData = carsData.drop('altezza', axis=1)
         carsData = carsData.drop('mpgautostrada', axis=1)
         carsData = carsData.drop('peso', axis=1)
         carsData = carsData.drop('symboling', axis=1)
+
+        # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
+        print(F"Esempi di partenza (!Wne): {carsData.shape}")
+
+        # print(mediaCitta)
+        carsData = carsData.drop(carsData[(carsData.mpgcitta < ConsumoCitta)].index)
+        if q3 == True:  # nonUtilitaria
+            carsData = carsData.drop(carsData[(carsData.lunghezza < Lunghezza)].index)
+        else:
+            carsData = carsData.drop(carsData[(carsData.lunghezza > Lunghezza)].index)
 
         mediaCitta = carsData['mpgcitta'].mean()
         mediaLunghezza = carsData['lunghezza'].mean()
@@ -30,13 +43,8 @@ class DecisionML:
         mediaCilindrata = carsData['cilindrata'].mean()
         mediaCavalli = carsData['cavalli'].mean()
 
-        # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
-        print(F"Esempi di partenza (!Wne): {carsData.shape}")
-
-        carsData = carsData.drop(
-            carsData[(carsData.mpgcitta > mediaCitta) & (carsData.lunghezza > mediaLunghezza)].index)
-        mediaCitta = carsData['mpgcitta'].mean()
-        mediaLunghezza = carsData['lunghezza'].mean()
+        if not isinstance(Prezzo, int):
+            Prezzo = carsData['prezzo'].mean()
 
         data_tree = carsData
 
@@ -53,23 +61,31 @@ class DecisionML:
             AspirazioneMotore = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["aspirazione"])
 
-        if q4 == "ANT":
-            trazione = [0, 1, 0]
+        if q4 == "ANT" and ('rwd' in data_tree['trazione'].values) and ('fwd' in data_tree['trazione'].values):
+
+            trazione = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
-        elif q4 == "POST":
-            trazione = [0, 0, 1]
+        elif q4 == "POST" and ('rwd' in data_tree['trazione'].values) and ('fwd' in data_tree['trazione'].values):
+
+            trazione = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
+
         elif q3 == True:
-            trazione = [1, 0, 0]
+            trazione = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         else:
             trazione = DELETE
             data_tree = data_tree.drop('trazione', axis=1)
 
-        if q5 == "BENZ":
+        if q5 == "BENZ" and ('gas' in data_tree['carburante'].values) and (
+                'diesel' in data_tree['carburante'].values):
+
             carburante = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["carburante"])
-        elif q5 == "DIS":
+
+        elif q5 == "DIS" and ('gas' in data_tree['carburante'].values) and (
+                'diesel' in data_tree['carburante'].values):
+
             carburante = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["carburante"])
         else:
@@ -107,6 +123,7 @@ class DecisionML:
         if carburante != DELETE:
             value_list = value_list + carburante
         value_list = value_list + AspirazioneMotore
+        value_list = value_list + [Prezzo]
 
         print(data_tree.columns.tolist())
         print(value_list)
