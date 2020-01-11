@@ -60,7 +60,7 @@ class Trip:
         def CallMachineLearnng(q1, q2, q3, q4, q5, q6):
             from Prediction import DecisionTreeTrip
             predizione = DecisionTreeTrip.DecisionML.Decison("self", q1, q2, q3, q4, q5, q6)
-            PrintResult(predizione,q2, q3, q4, q5, q6)
+            PrintResult(predizione, q2, q3, q4, q5, q6)
 
         def Question1_6(q1, q2, q3, q4, q5):
             enterprice = StringVar(value="euro")
@@ -72,8 +72,8 @@ class Trip:
 
             l1 = Label(frame, text="Quale prezzo preferiresti?", background="#c8e6c9", foreground="#43a047",
                        font=("Helvetica", 50))
-            insertPrice = Entry(frame, textvariable=enterprice, background="#e8f5e9", foreground=ColorBttnTxT,
-                                font=("Helvetica", 30))
+            insertPrice = Entry(frame, textvariable=enterprice, background="#DFF0E0", foreground=ColorBttnTxtree,
+                                font=("Helvetica", 30), border = 0)
             l1.grid(row=0, column=4)
             insertPrice.grid(row=1, column=4)
             b3 = Button(frame, text="Inserisci", width=15, background=ColorBttn,

@@ -72,12 +72,12 @@ class Race:
 
             l1 = Label(frame, text="Quale prezzo preferiresti?", background="#c8e6c9", foreground="#43a047",
                        font=("Helvetica", 50))
-            insertPrice = Entry(frame, textvariable=enterprice, background="#e8f5e9", foreground=ColorBttnTxT,
-                                font=("Helvetica", 30))
+            insertPrice = Entry(frame, textvariable=enterprice, background="#DFF0E0", foreground=ColorBttnTxtree,
+                                font=("Helvetica", 30), border = 0)
             l1.grid(row=0, column=4)
             insertPrice.grid(row=1, column=4)
-            b3 = Button(frame, text="Inserisci", width=15, background=ColorBttn, activeforeground = "#ff9e80",
-                        command=setPrice, activebackground = "#aed581",
+            b3 = Button(frame, text="Inserisci", width=15, background=ColorBttn,
+                        command=setPrice,
                         font=('Courrier', '20'),
                         foreground=ColorBttnTxT)
 
