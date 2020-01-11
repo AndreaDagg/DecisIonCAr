@@ -35,12 +35,12 @@ class DatabaseConnection:
         cursor.execute(sqlSelect)
         result = cursor.fetchall()
 
-        l1 = Listbox(frame, width=200, height=660, fg=ColorBttnTxtree, font=('Comic Sans MS', 25))
+        l1 = Listbox(frame, width=150, fg=ColorBttnTxtree, font=('Comic Sans MS', 25))
         l1.insert(0, "modello,carburante,porte,cilindrata,mpgcitta,mpgautostrada,prezzo")
         for x in result:
             print(x)
             l1.insert(1, x)
-        l1.grid(row=0, column=0)
+
         cursor.close()
         db.close()
 
@@ -53,9 +53,10 @@ class DatabaseConnection:
                     command=Home,
                     font=('Courrier', '10'),
                     foreground=ColorBttnTxtree)
-        b2.grid(row=2, col=1)
-        b2.grid(row=2, col=3)
 
+        l1.grid(row=0, column=1)
+        b1.grid(row=4, column=1)
+        b2.grid(row=4, column=3)
         mainloop()
 
     def __init__(self, frame, value, callBy):
