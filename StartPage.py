@@ -12,7 +12,7 @@ class StartPage:
         root.title("DecisionCar")
         root.geometry("1230x660")
         root.resizable(FALSE, FALSE)
-        icona = PhotoImage(file="img/DecisionCarIco.png")
+        icona = PhotoImage(file="img/iconDCc.png")
         root.tk.call("wm", "iconphoto", root._w, icona)
         frame = Frame(root, height=660, width=1230)
         frame.grid(row=0, column=0, columnspan=5, rowspan=6)

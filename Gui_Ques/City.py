@@ -34,7 +34,7 @@ class City:
                 from DecisionML import Decision
                 Decision(frame)
 
-            l1 = Label(frame, text="Ti consiglio di acquistare", background=ColorBttn, foreground="#43a047",
+            l1 = Label(frame, text="Ti consiglio di acquistare", background="#c8e6c9", foreground="#43a047",
                        font=("Helvetica", 50))
             b3 = Button(frame, text="Home", width=15, background=ColorBttn,
                         command=Home,
@@ -70,7 +70,7 @@ class City:
                 destryAll()
                 CallMachineLearnng(q1, q2, q3, q4, q5, ChoiceQ1_6)
 
-            l1 = Label(frame, text="Quale prezzo preferiresti?", background=ColorBttn, foreground="#43a047",
+            l1 = Label(frame, text="Quale prezzo preferiresti?", background="#c8e6c9", foreground="#43a047",
                        font=("Helvetica", 50))
             insertPrice = Entry(frame, textvariable=enterprice, background="#e8f5e9", foreground=ColorBttnTxT,
                                 font=("Helvetica", 30))
@@ -104,7 +104,7 @@ class City:
                 destryAll()
                 Question1_6(q1, q2, q3, q4, ChoiceQ1_5)
 
-            l1 = Label(frame, text="Quale tipo di carburante", background=ColorBttn, foreground="#43a047",
+            l1 = Label(frame, text="Quale tipo di carburante", background="#c8e6c9", foreground="#43a047",
                        font=("Helvetica", 60))
             l2 = Label(frame, text="preferisci?", background='#c8e6c9', foreground="#43a047",
                        font=("Helvetica", 50))
@@ -153,7 +153,7 @@ class City:
                 destryAll()
                 Question1_5(q1, q2, q3, ChoiceQ1_4)
 
-            l1 = Label(frame, text="Quale tipo di trazione", background=ColorBttn, foreground="#43a047",
+            l1 = Label(frame, text="Quale tipo di trazione", background="#c8e6c9", foreground="#43a047",
                        font=("Helvetica", 60))
             l2 = Label(frame, text="preferisci?", background='#c8e6c9', foreground="#43a047",
                        font=("Helvetica", 50))
@@ -197,7 +197,7 @@ class City:
                 destryAll()
                 Question1_4(q1, q2, ChoiceQ1_3)
 
-            l1 = Label(frame, text="Vuoi che sia potente?", background=ColorBttn, foreground="#43a047",
+            l1 = Label(frame, text="Vuoi che sia potente?", background="#c8e6c9", foreground="#43a047",
                        font=("Helvetica", 60))
             l2 = Label(frame, text="AdEs. Per trasportare merci", background='#c8e6c9', foreground="#43a047",
                        font=("Helvetica", 20))
@@ -234,7 +234,7 @@ class City:
                 destryAll()
                 Question1_3(q1, ChoiceQ1_2)
 
-            l1 = Label(frame, text="Quante porte preferisci?", background=ColorBttn, foreground="#43a047",
+            l1 = Label(frame, text="Quante porte preferisci?", background="#c8e6c9", foreground="#43a047",
                        font=("Helvetica", 60))
             l1.grid(row=0, column=4)
             b1 = Button(frame, text="Tre", width=15, background=ColorBttn,
