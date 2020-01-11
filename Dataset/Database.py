@@ -5,7 +5,7 @@ import MySQLdb
 
 class DatabaseConnection:
 
-    def DatabaseCall(self, frame, value, callBy):
+    def DatabaseCall(self, frame, value, callBy, q2, q3, q4, q5, q6):
         ColorBttn = "#c8e6c9"
         ColorBttnTxtree = "#455a64"
         ColorBttnTxT = "#ff8f00"
@@ -41,6 +41,10 @@ class DatabaseConnection:
             print(x)
             l1.insert(1, x)
 
+        sqlInsert = 'INSERT INTO predictions (MARCA,Q1,Q2,Q3,Q4,Q5,Q6,TIPO) VALUES ("' + value + '","C","' + q2 + '","' + str(q3) + '","'+q4+'","' + q5 + '","'+q6+'","' + callBy + '")'
+        cursor.execute(sqlInsert)
+        db.commit()
+
         cursor.close()
         db.close()
 
@@ -59,6 +63,6 @@ class DatabaseConnection:
         b2.grid(row=4, column=3)
         mainloop()
 
-    def __init__(self, frame, value, callBy):
+    def __init__(self, frame, value, callBy, q2, q3, q4, q5, q6):
         frame.grid_forget()
-        DatabaseConnection.DatabaseCall(self, frame, value, callBy)
+        DatabaseConnection.DatabaseCall(self, frame, value, callBy, q2, q3, q4, q5, q6)

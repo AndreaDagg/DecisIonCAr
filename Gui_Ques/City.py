@@ -25,10 +25,10 @@ class City:
             from img.TreePng import ShowTree
             ShowTree(frame, "CITY")
 
-        def PrintResult(value):
+        def PrintResult(value, q2, q3, q4, q5, q6):
             def db():
                 from Dataset import Database
-                Database.DatabaseConnection(frame, value, "CITY")
+                Database.DatabaseConnection(frame, value, "CITY", q2, q3, q4, q5, q6)
 
             l1 = Label(frame, text="Ti consiglio di cercare un auto", background=ColorBttn, foreground="#43a047",
                        font=("Helvetica", 50))
@@ -49,7 +49,7 @@ class City:
         def CallMachineLearnng(q1, q2, q3, q4, q5, q6):
             from MachineLearning import DecisionTreeCity
             predizione = DecisionTreeCity.DecisionML.Decison("self", q1, q2, q3, q4, q5, q6)
-            PrintResult(predizione)
+            PrintResult(predizione, q2, q3, q4, q5, q6)
 
         def Question1_6(q1, q2, q3, q4, q5):
             enterprice = StringVar(value="euro")

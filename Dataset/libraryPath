@@ -9,6 +9,12 @@ conda install graphvz
 pip install MySQL-python (Se non va)
 pip install mysqlclient
 
+====== DATABASE ========
+Avvia xampp my sql e Apache
+http://localhost/dashboard/
+http://localhost/phpmyadmin/
+http://localhost/phpmyadmin/db_structure.php?server=1&db=cars
+
 #TODO: Modificare il fatto del prezzo tra 0 e 1 e farlo inserire
 
 #TODO: Vedere se è gestito bene il fatto che le auto fanno tun tot di miglio con un galone forse non hai ragionato così
