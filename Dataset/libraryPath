@@ -26,6 +26,6 @@ TODO: Controllare le altre classi.
 #TODO: Aggiungere possibilità di inserire una preferenza sul prezzo, dato che è stato cabiato.
 #TODO: Valuta di eliminare le auto a 4 porte se seleziono a 2
 
-TODO: COntrollo if carburante e trazione
-TODO: Aggingere database anche a trip e all
-TODO: vedere perché non escono i bottoni in DB
+#TODO: COntrollo if carburante e trazione
+#TODO: Aggingere database anche a trip e all
+#TODO: vedere perché non escono i bottoni in DB evalutare aggiugere bottone sul like dato che abbiamo al tabella nel db

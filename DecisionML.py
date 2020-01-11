@@ -8,8 +8,8 @@ from Gui_Ques.All import Race
 class Decision:
 
     def newDecision(self, frame):
-        ColorBttn = "#c8e6c9"
-        ColorBttnTxT = "#ff8f00"
+        ColorBttn = "#BADEC0"
+        ColorBttnTxT = "#FF8F00"
 
         frame.grid(row=0, column=0, columnspan=5, rowspan=5)
 

@@ -5,27 +5,15 @@ import MySQLdb
 
 class DatabaseConnection:
 
-    def DatabaseCall(self, frame, value, callBy, q2, q3, q4, q5, q6):
+    def DatabaseCall(self, value, callBy, q2, q3, q4, q5, q6):
         ColorBttn = "#c8e6c9"
         ColorBttnTxtree = "#455a64"
         ColorBttnTxT = "#ff8f00"
 
-        def Home():
-            from DecisionML import Decision
-            Decision(frame)
-
-        def Tree():
-            if callBy == "CITY":
-                from img.TreePng import ShowTree
-                ShowTree(frame, "CITY")
-            elif callBy == "TRIP":
-                from img.TreePng import ShowTree
-                ShowTree(frame, "TRIP")
-            else:
-                from img.TreePng import ShowTree
-                ShowTree(frame, "RACE")
-
-        frame.grid(row=0, column=0, columnspan=5, rowspan=5)
+        rootDB = Tk()
+        rootDB.title("Caratteristiche")
+        rootDB.geometry("800x400")
+        rootDB.resizable(FALSE, FALSE)
 
         db = MySQLdb.connect("127.0.0.1", "root", "", "cars")
         cursor = db.cursor()
@@ -35,34 +23,23 @@ class DatabaseConnection:
         cursor.execute(sqlSelect)
         result = cursor.fetchall()
 
-        l1 = Listbox(frame, width=150, fg=ColorBttnTxtree, font=('Comic Sans MS', 25))
+        l1 = Listbox(rootDB,height=10,width=150, bg="#cfd8dc", fg = ColorBttnTxtree, font = ('Comic Sans MS', 18))
         l1.insert(0, "modello,carburante,porte,cilindrata,mpgcitta,mpgautostrada,prezzo")
         for x in result:
-            print(x)
+            #print(x)
             l1.insert(1, x)
 
-        sqlInsert = 'INSERT INTO predictions (MARCA,Q1,Q2,Q3,Q4,Q5,Q6,TIPO) VALUES ("' + value + '","C","' + q2 + '","' + str(q3) + '","'+q4+'","' + q5 + '","'+q6+'","' + callBy + '")'
+        sqlInsert = 'INSERT INTO predictions (MARCA,Q1,Q2,Q3,Q4,Q5,Q6,TIPO) VALUES ("' + value + '","C","' + q2 + '","' + str(
+            q3) + '","' + q4 + '","' + q5 + '","' + q6 + '","' + callBy + '")'
         cursor.execute(sqlInsert)
         db.commit()
 
         cursor.close()
         db.close()
 
-        b1 = Button(frame, text="Visualizza Albero", width=15, background=ColorBttn,
-                    command=Tree,
-                    font=('Courrier', '10'),
-                    foreground=ColorBttnTxtree)
-
-        b2 = Button(frame, text="Home", width=15, background=ColorBttn,
-                    command=Home,
-                    font=('Courrier', '10'),
-                    foreground=ColorBttnTxtree)
-
         l1.grid(row=0, column=1)
-        b1.grid(row=4, column=1)
-        b2.grid(row=4, column=3)
+
         mainloop()
 
-    def __init__(self, frame, value, callBy, q2, q3, q4, q5, q6):
-        frame.grid_forget()
-        DatabaseConnection.DatabaseCall(self, frame, value, callBy, q2, q3, q4, q5, q6)
+    def __init__(self, value, callBy, q2, q3, q4, q5, q6):
+        DatabaseConnection.DatabaseCall(self, value, callBy, q2, q3, q4, q5, q6)

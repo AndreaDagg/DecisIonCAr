@@ -10,7 +10,7 @@ from PIL import ImageTk, Image
 class City:
 
     def CityQuestion(self, frame):
-        ColorBttn = "#c8e6c9"
+        ColorBttn = "#BADEC0"
         ColorBttnTxtree = "#455a64"
         ColorBttnTxT = "#ff8f00"
 
@@ -28,26 +28,37 @@ class City:
         def PrintResult(value, q2, q3, q4, q5, q6):
             def db():
                 from Dataset import Database
-                Database.DatabaseConnection(frame, value, "CITY", q2, q3, q4, q5, q6)
+                Database.DatabaseConnection(value, "CITY", q2, q3, q4, q5, q6)
 
-            l1 = Label(frame, text="Ti consiglio di cercare un auto", background=ColorBttn, foreground="#43a047",
+            def Home():
+                from DecisionML import Decision
+                Decision(frame)
+
+            l1 = Label(frame, text="Ti consiglio di acquistare", background=ColorBttn, foreground="#43a047",
                        font=("Helvetica", 50))
-            l2 = Label(frame, text="di questa marca:", background='#c8e6c9', foreground="#43a047",
-                       font=("Helvetica", 40))
+            b3 = Button(frame, text="Home", width=15, background=ColorBttn,
+                        command=Home,
+                        font=('Courrier', '15'),
+                        foreground=ColorBttnTxtree)
             l3 = Label(frame, text=value, background='#c8e6c9', foreground="#e57373",
                        font=("Helvetica", 70))
             b1 = Button(frame, text="Visualizza Albero", width=15, background=ColorBttn,
+                        command=Tree,
+                        font=('Courrier', '15'),
+                        foreground=ColorBttnTxtree)
+            b2 = Button(frame, text="Caratteristiche", width=15, background=ColorBttn,
                         command=db,
-                        font=('Courrier', '10'),
+                        font=('Courrier', '15'),
                         foreground=ColorBttnTxtree)
 
             l1.grid(row=0, column=4)
-            l2.grid(row=1, column=4)
-            l3.grid(row=2, column=4)
-            b1.grid(row=4, column=4)
+            b3.grid(row=4, column=4)
+            l3.grid(row=1, column=4)
+            b1.grid(row=2, column=4)
+            b2.grid(row=3, column=4)
 
         def CallMachineLearnng(q1, q2, q3, q4, q5, q6):
-            from MachineLearning import DecisionTreeCity
+            from Prediction import DecisionTreeCity
             predizione = DecisionTreeCity.DecisionML.Decison("self", q1, q2, q3, q4, q5, q6)
             PrintResult(predizione, q2, q3, q4, q5, q6)
 

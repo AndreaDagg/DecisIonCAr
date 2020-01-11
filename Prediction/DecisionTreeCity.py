@@ -27,14 +27,12 @@ class DecisionML:
         carsData = carsData.drop('peso', axis=1)
         carsData = carsData.drop('symboling', axis=1)
 
-
-
         # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
         print(F"Esempi di partenza (!Wne): {carsData.shape}")
 
-        #print(mediaCitta)
+        # print(mediaCitta)
         carsData = carsData.drop(carsData[(carsData.mpgcitta < ConsumoCitta)].index)
-        if q3 == True: #nonUtilitaria
+        if q3 == True:  # nonUtilitaria
             carsData = carsData.drop(carsData[(carsData.lunghezza < Lunghezza)].index)
         else:
             carsData = carsData.drop(carsData[(carsData.lunghezza > Lunghezza)].index)
@@ -63,12 +61,15 @@ class DecisionML:
             AspirazioneMotore = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["aspirazione"])
 
-        if q4 == "ANT":
-            trazione = [1,0]
+        if q4 == "ANT" and ('rwd' in data_tree['trazione'].values) and ('fwd' in data_tree['trazione'].values):
+
+            trazione = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
-        elif q4 == "POST":
+        elif q4 == "POST" and ('rwd' in data_tree['trazione'].values) and ('fwd' in data_tree['trazione'].values):
+
             trazione = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
+
         elif q3 == True:
             trazione = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
@@ -76,10 +77,15 @@ class DecisionML:
             trazione = DELETE
             data_tree = data_tree.drop('trazione', axis=1)
 
-        if q5 == "BENZ":
+        if q5 == "BENZ" and ('gas' in data_tree['carburante'].values) and (
+                'diesel' in data_tree['carburante'].values):
+
             carburante = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["carburante"])
-        elif q5 == "DIS":
+
+        elif q5 == "DIS" and ('gas' in data_tree['carburante'].values) and (
+                'diesel' in data_tree['carburante'].values):
+
             carburante = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["carburante"])
         else:

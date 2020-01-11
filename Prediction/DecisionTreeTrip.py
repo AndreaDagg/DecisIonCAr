@@ -77,11 +77,13 @@ class DecisionML:
             Prezzo = carsData['prezzo'].mean()
         data_tree = carsData
 
-        if q4 == "ANT" and 'rwd' in data_tree['trazione'].values:
+        if q4 == "ANT" and ('rwd' in data_tree['trazione'].values) and ('fwd' in data_tree['trazione'].values):
+
             print("Selezionato Ant, esiste rwd")
             trazione = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
-        elif q4 == "POST" and 'fwd' in data_tree['trazione'].values:
+        elif q4 == "POST" and ('rwd' in data_tree['trazione'].values) and ('fwd' in data_tree['trazione'].values):
+
             print("Selezionato POST, esiste fwd")
             trazione = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
@@ -90,10 +92,15 @@ class DecisionML:
             trazione = DELETE
             data_tree = data_tree.drop('trazione', axis=1)
 
-        if q5 == "BENZ" and 'diesel' in data_tree['carburante'].values:
+        if q5 == "BENZ" and ('gas' in data_tree['carburante'].values) and (
+                'diesel' in data_tree['carburante'].values):
+
             carburante = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["carburante"])
-        elif q5 == "DIS" and 'gas' in data_tree['carburante'].values:
+
+        elif q5 == "DIS" and ('gas' in data_tree['carburante'].values) and (
+                'diesel' in data_tree['carburante'].values):
+
             carburante = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["carburante"])
         else:
