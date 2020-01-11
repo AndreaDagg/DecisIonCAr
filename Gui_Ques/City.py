@@ -26,6 +26,10 @@ class City:
             ShowTree(frame, "CITY")
 
         def PrintResult(value):
+            def db():
+                from Dataset import Database
+                Database.DatabaseConnection(frame, value, "CITY")
+
             l1 = Label(frame, text="Ti consiglio di cercare un auto", background=ColorBttn, foreground="#43a047",
                        font=("Helvetica", 50))
             l2 = Label(frame, text="di questa marca:", background='#c8e6c9', foreground="#43a047",
@@ -33,7 +37,7 @@ class City:
             l3 = Label(frame, text=value, background='#c8e6c9', foreground="#e57373",
                        font=("Helvetica", 70))
             b1 = Button(frame, text="Visualizza Albero", width=15, background=ColorBttn,
-                        command=Tree,
+                        command=db,
                         font=('Courrier', '10'),
                         foreground=ColorBttnTxtree)
 
