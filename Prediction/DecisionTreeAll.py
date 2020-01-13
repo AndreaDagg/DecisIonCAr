@@ -12,7 +12,6 @@ class DecisionML:
     def Decison(self, q1, q2, q3, q4, q5, Prezzo):
         print(F"Choices: {q1} - {q2} - {q3} - {q4} - {q5} - Prezzo: {Prezzo}")
         DELETE = -1
-        MINCILINDRI = 6
         carsData = pd.read_csv("Dataset/cars.csv")
         # print(carsData.info())
         # print(carsData.head())
@@ -25,10 +24,7 @@ class DecisionML:
         carsData = carsData.drop('aspirazione', axis=1)
         carsData = carsData.drop('cavalli', axis=1)
 
-        # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
         print(F"Esempi di partenza (!Wne): {carsData.shape}")
-
-        # carsData = carsData.drop(carsData[(carsData.altezza <)].index)
 
         mediaCitta = carsData['mpgcitta'].mean()
         carsData = carsData.drop(carsData[(carsData.mpgcitta < mediaCitta)].index)
@@ -42,11 +38,9 @@ class DecisionML:
         # Setto i paramentri impostati nell Gui ed effettuo Why not encoding dove necessario
         if q2 == "Three":
             porte = 2
-            # carsData = carsData.drop(carsData[(carsData.lunghezza == 4)].index)
             carsData = carsData.drop(carsData[(carsData.cilindrata > mediaCilindrata)].index)
         else:
             porte = 4
-            # carsData = carsData.drop(carsData[(carsData.lunghezza == 2)].index)
             carsData = carsData.drop(carsData[(carsData.cilindrata < mediaCilindrata)].index)
 
         if q3 == True:
@@ -91,7 +85,6 @@ class DecisionML:
         mediaAutostrada = data_tree['mpgautostrada'].mean()
         mediaCilindrata = data_tree['cilindrata'].mean()
         mediaAltezza = data_tree['altezza'].mean()
-        print(data_tree.columns.tolist())
 
         # Costruisci l'albero decisionale
         from sklearn.tree import DecisionTreeClassifier
@@ -124,13 +117,11 @@ class DecisionML:
         print("ACCURACY: TRAIN=%.4f TEST=%.4f" % (accuracy_train, accuracy_test))
 
         value_list = [porte, mediaLunghezza, mediaAltezza, mediaCilindrata, mediaCitta, mediaAutostrada, Prezzo]
-        # print(F"Porte {porte}, lung {mediaLunghezza} alte {mediaAltezza} cilind {mediaCilindri} cilindra {mediaCilindrata} cavall {mediaCavalli}")
+
         if trazione != DELETE:
             value_list = value_list + trazione
-        #   print(F"traz {trazione}")
         if carburante != DELETE:
             value_list = value_list + carburante
-        #  print(F"ccarb {carburante}")
 
         print(data_tree.columns.tolist())
         print(value_list)

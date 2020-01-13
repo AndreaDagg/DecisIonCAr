@@ -30,7 +30,6 @@ class DecisionML:
         # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
         print(F"Esempi di partenza (!Wne): {carsData.shape}")
 
-        # print(mediaCitta)
         carsData = carsData.drop(carsData[(carsData.mpgcitta < ConsumoCitta)].index)
         if q3 == True:  # nonUtilitaria
             carsData = carsData.drop(carsData[(carsData.lunghezza < Lunghezza)].index)

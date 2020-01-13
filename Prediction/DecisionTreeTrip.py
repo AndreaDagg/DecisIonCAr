@@ -19,7 +19,6 @@ class DecisionML:
         # print(carsData.head())
 
         # Eliminaimo le colonne non utli dal dataset
-
         carsData = carsData.drop('cilindri', axis=1)
         carsData = carsData.drop('larghezza', axis=1)
         carsData = carsData.drop('mpgcitta', axis=1)
@@ -33,8 +32,6 @@ class DecisionML:
         print(F"AUT=> {mediaAutostrada}")
         carsData = carsData.drop(carsData[(carsData.mpgautostrada < 28)].index)
 
-        # mediaCilindrata = carsData['cilindrata'].mode()
-        # print(mediaCilindrata)
         minimoCilindrata = 87
         carsData = carsData.drop(carsData[(carsData.cilindrata < minimoCilindrata)].index)
 
