@@ -27,9 +27,7 @@ class DecisionML:
 
         # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
         print(F"Esempi di partenza (!Wne): {carsData.shape}")
-
         mediaAutostrada = carsData['mpgautostrada'].mean()
-        print(F"AUT=> {mediaAutostrada}")
         carsData = carsData.drop(carsData[(carsData.mpgautostrada < 28)].index)
 
         minimoCilindrata = 87
@@ -75,17 +73,12 @@ class DecisionML:
         data_tree = carsData
 
         if q4 == "ANT" and ('rwd' in data_tree['trazione'].values) and ('fwd' in data_tree['trazione'].values):
-
-            print("Selezionato Ant, esiste rwd")
             trazione = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         elif q4 == "POST" and ('rwd' in data_tree['trazione'].values) and ('fwd' in data_tree['trazione'].values):
-
-            print("Selezionato POST, esiste fwd")
             trazione = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         else:
-            print("cancello")
             trazione = DELETE
             data_tree = data_tree.drop('trazione', axis=1)
 
@@ -104,7 +97,6 @@ class DecisionML:
             carburante = DELETE
             data_tree = data_tree.drop('carburante', axis=1)
 
-        print(data_tree.columns.tolist())
         print(F"Esempi elaborati (!Wne): {data_tree.shape}")
 
         # Costruisci l'albero decisionale
