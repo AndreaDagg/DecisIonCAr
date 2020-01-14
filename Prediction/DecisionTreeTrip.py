@@ -19,7 +19,6 @@ class DecisionML:
         # print(carsData.head())
 
         # Eliminaimo le colonne non utli dal dataset
-
         carsData = carsData.drop('cilindri', axis=1)
         carsData = carsData.drop('larghezza', axis=1)
         carsData = carsData.drop('mpgcitta', axis=1)
@@ -28,13 +27,9 @@ class DecisionML:
 
         # Eliminiamo le vetture sopra la media per caratteristiche rilevanti e la ricalcoliamo
         print(F"Esempi di partenza (!Wne): {carsData.shape}")
-
         mediaAutostrada = carsData['mpgautostrada'].mean()
-        print(F"AUT=> {mediaAutostrada}")
         carsData = carsData.drop(carsData[(carsData.mpgautostrada < 28)].index)
 
-        # mediaCilindrata = carsData['cilindrata'].mode()
-        # print(mediaCilindrata)
         minimoCilindrata = 87
         carsData = carsData.drop(carsData[(carsData.cilindrata < minimoCilindrata)].index)
 
@@ -78,17 +73,12 @@ class DecisionML:
         data_tree = carsData
 
         if q4 == "ANT" and ('rwd' in data_tree['trazione'].values) and ('fwd' in data_tree['trazione'].values):
-
-            print("Selezionato Ant, esiste rwd")
             trazione = [1, 0]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         elif q4 == "POST" and ('rwd' in data_tree['trazione'].values) and ('fwd' in data_tree['trazione'].values):
-
-            print("Selezionato POST, esiste fwd")
             trazione = [0, 1]
             data_tree = pd.get_dummies(data_tree, columns=["trazione"])
         else:
-            print("cancello")
             trazione = DELETE
             data_tree = data_tree.drop('trazione', axis=1)
 
@@ -107,7 +97,6 @@ class DecisionML:
             carburante = DELETE
             data_tree = data_tree.drop('carburante', axis=1)
 
-        print(data_tree.columns.tolist())
         print(F"Esempi elaborati (!Wne): {data_tree.shape}")
 
         # Costruisci l'albero decisionale
@@ -116,6 +105,7 @@ class DecisionML:
         from sklearn.tree import export_graphviz
         import os
         from subprocess import call
+        from matplotlib import pyplot as plt
 
         x = data_tree.drop(['marca'], axis=1)
         y = carsData['marca']
@@ -128,6 +118,11 @@ class DecisionML:
         tree.fit(x_train, y_train)
         y_pred_train = tree.predict(x_train)
         y_pred = tree.predict(x_test)
+
+        plt.scatter(y_train, y_pred_train)
+        plt.xlabel("True value")
+        plt.ylabel("Prediction")
+        plt.show()
 
         accuracy_train = accuracy_score(y_train, y_pred_train)
         accuracy_test = accuracy_score(y_test, y_pred)
@@ -155,6 +150,7 @@ class DecisionML:
         print(value_list)
 
         predizione = tree.predict([value_list])
+        path = tree.decision_path([value_list])
 
         print(F"Predizione: {predizione[0]}")
 
@@ -163,5 +159,7 @@ class DecisionML:
                         filled=True, class_names=True)
         call(['dot', '-Tpng', 'treetrip.dot', '-o', 'treetrip.png'])
         Image(filename='treetrip.png')
+
+        print(path)
 
         return predizione[0]
