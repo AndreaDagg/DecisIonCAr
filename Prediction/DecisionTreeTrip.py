@@ -105,6 +105,7 @@ class DecisionML:
         from sklearn.tree import export_graphviz
         import os
         from subprocess import call
+        from matplotlib import pyplot as plt
 
         x = data_tree.drop(['marca'], axis=1)
         y = carsData['marca']
@@ -117,6 +118,11 @@ class DecisionML:
         tree.fit(x_train, y_train)
         y_pred_train = tree.predict(x_train)
         y_pred = tree.predict(x_test)
+
+        plt.scatter(y_train, y_pred_train)
+        plt.xlabel("True value")
+        plt.ylabel("Prediction")
+        plt.show()
 
         accuracy_train = accuracy_score(y_train, y_pred_train)
         accuracy_test = accuracy_score(y_test, y_pred)
@@ -144,6 +150,7 @@ class DecisionML:
         print(value_list)
 
         predizione = tree.predict([value_list])
+        path = tree.decision_path([value_list])
 
         print(F"Predizione: {predizione[0]}")
 
@@ -152,5 +159,7 @@ class DecisionML:
                         filled=True, class_names=True)
         call(['dot', '-Tpng', 'treetrip.dot', '-o', 'treetrip.png'])
         Image(filename='treetrip.png')
+
+        print(path)
 
         return predizione[0]

@@ -97,6 +97,7 @@ class DecisionML:
         from sklearn.tree import export_graphviz
         import os
         from subprocess import call
+        from matplotlib import pyplot as plt
 
         x = data_tree.drop(['marca'], axis=1)
         y = carsData['marca']
@@ -115,6 +116,11 @@ class DecisionML:
 
         print("ACCURACY: TRAIN=%.4f TEST=%.4f" % (accuracy_train, accuracy_test))
 
+        plt.scatter(y_train, y_pred_train)
+        plt.xlabel("True value")
+        plt.ylabel("Prediction")
+        plt.show()
+
         value_list = [porte, mediaLunghezza, mediaLarghezza, mediaCilindrata,
                       mediaCavalli, mediaCitta]
         if trazione != DELETE:
@@ -128,6 +134,7 @@ class DecisionML:
         print(value_list)
 
         predizione = tree.predict([value_list])
+        path = tree.decision_path([value_list])
 
         print(F"Predizione: {predizione[0]}")
 
@@ -136,5 +143,5 @@ class DecisionML:
                         filled=True, class_names=True)
         call(['dot', '-Tpng', 'treecity.dot', '-o', 'treecity.png'])
         Image(filename='treecity.png')
-
+        print(path)
         return predizione[0]
